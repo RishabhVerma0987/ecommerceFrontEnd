@@ -1,6 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap");
+$darkGreenColor: #1a4c31;
+$greenShade: #032a33;
+$redColor: #cf123c;
+$whiteColor: #f5fefb;
+$goldenColor: #f1d18a;
+$fontBasic: "Cinzel", serif;
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: $fontBasic;
+  color: $goldenColor;
+  font-weight: 100;
 }
-$darkGreenColor: #1a4c31;
