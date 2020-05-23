@@ -1,10 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap");
+
 $darkGreenColor: #1a4c31;
 $greenShade: #032a33;
 $redColor: #cf123c;
 $whiteColor: #f5fefb;
 $goldenColor: #f1d18a;
-$fontBasic: "Cinzel", serif;
+$fontNew: "Cinzel", serif;
+$header1: 5rem;
+$header2: 4.5rem;
+$header3: 4rem;
+$header4: 3.5rem;
+$header5: 3rem;
+$textSize: 2rem;
+$fontBasic: "Crimson Text", serif;
 * {
   margin: 0px;
   padding: 0px;
@@ -12,4 +21,42 @@ $fontBasic: "Cinzel", serif;
   font-family: $fontBasic;
   color: $goldenColor;
   font-weight: 100;
+}
+html {
+  font-size: 62.5%;
+}
+
+h1 {
+  font-size: $header1;
+}
+
+h2 {
+  font-size: $header2;
+}
+
+h3 {
+  font-size: $header3;
+}
+
+h4 {
+  font-size: $header4;
+}
+
+h5 {
+  font-size: $header5;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+ul {
+  list-style: none;
+}
+
+li,
+p,
+a {
+  font-size: $textSize;
 }
