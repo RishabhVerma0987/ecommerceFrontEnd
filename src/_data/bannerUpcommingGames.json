@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "game_name": "Fran",
+    "image_name": "Rennie"
+  },
+  {
+    "id": 2,
+    "game_name": "Sam",
+    "image_name": "Hedvig"
+  },
+  {
+    "id": 3,
+    "game_name": "Gale",
+    "image_name": "Lanni"
+  }
+]
