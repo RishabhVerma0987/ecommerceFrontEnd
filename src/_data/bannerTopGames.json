@@ -1,17 +1,20 @@
 [
   {
     "id": 1,
-    "game_name": "Fran",
-    "image_name": "Rennie"
+    "game_name": "cyberpunk2077",
+    "image_name": "cyberpunk",
+    "scale": 1
   },
   {
     "id": 2,
-    "game_name": "Sam",
-    "image_name": "Hedvig"
+    "game_name": "Apexlengends",
+    "image_name": "apex",
+    "scale": 0.9
   },
   {
     "id": 3,
-    "game_name": "Gale",
-    "image_name": "Lanni"
+    "game_name": "callofdutybo3",
+    "image_name": "callofduty",
+    "scale": 0.8
   }
 ]

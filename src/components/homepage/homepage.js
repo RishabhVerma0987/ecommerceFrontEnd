@@ -21,44 +21,32 @@ function Homepage() {
         <p>at very affordable prices!!</p>
         <button>Browse All</button>
       </div>
-      <div className="upcommingGames">
-        <div className="box">
-          <div className="nameBox">
-            <p>cyberpunk2077</p>
-          </div>
-          <img
-            src={require("../../assets/cyberpunk.jpg")}
-            alt="cyberpunk"
-          ></img>
-          <div className="contentBox"></div>
+
+      {stateTopGames ? (
+        <div className="upcommingGames">
+          {stateTopGames.map((game) => {
+            return (
+              <div
+                className="box"
+                key={game.id}
+                style={{
+                  transform: `scale(${game.scale})`,
+                  opacity: game.scale === 1 ? 1 : 0.5,
+                }}
+              >
+                <div className="nameBox">
+                  <p>{game.game_name}</p>
+                </div>
+                <img
+                  src={require(`../../assets/${game.image_name}.jpg`)}
+                  alt={game.image_name}
+                ></img>
+                <div className="contentBox"></div>
+              </div>
+            );
+          })}
         </div>
-        <div
-          className="box"
-          style={{ transform: "scale(0.9)", opacity: "0.4" }}
-        >
-          <div className="nameBox">
-            <p>cyberpunk2077</p>
-          </div>
-          <img
-            src={require("../../assets/cyberpunk.jpg")}
-            alt="cyberpunk"
-          ></img>
-          <div className="contentBox"></div>
-        </div>
-        <div
-          className="box"
-          style={{ transform: "scale(0.9)", opacity: "0.4" }}
-        >
-          <div className="nameBox">
-            <p>cyberpunk2077</p>
-          </div>
-          <img
-            src={require("../../assets/cyberpunk.jpg")}
-            alt="cyberpunk"
-          ></img>
-          <div className="contentBox"></div>
-        </div>
-      </div>
+      ) : null}
     </div>
   );
 }
