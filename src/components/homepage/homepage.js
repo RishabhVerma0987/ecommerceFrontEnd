@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { topGamesBanner } from "../../store/actions";
 import "./homepage.scss";
 function Homepage() {
+  const dispatch = useDispatch();
+  const stateTopGames = useSelector((state) => state.bannerTopGamesReducer);
+
+  useEffect(() => {
+    dispatch(topGamesBanner());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log(stateTopGames);
   return (
     <div className="homepageBanner">
       <div className="content">
@@ -16,7 +26,10 @@ function Homepage() {
           <div className="nameBox">
             <p>cyberpunk2077</p>
           </div>
-          <img src={require("../../assets/cyberpunk.jpg")}></img>
+          <img
+            src={require("../../assets/cyberpunk.jpg")}
+            alt="cyberpunk"
+          ></img>
           <div className="contentBox"></div>
         </div>
         <div
@@ -26,7 +39,10 @@ function Homepage() {
           <div className="nameBox">
             <p>cyberpunk2077</p>
           </div>
-          <img src={require("../../assets/cyberpunk.jpg")}></img>
+          <img
+            src={require("../../assets/cyberpunk.jpg")}
+            alt="cyberpunk"
+          ></img>
           <div className="contentBox"></div>
         </div>
         <div
@@ -36,7 +52,10 @@ function Homepage() {
           <div className="nameBox">
             <p>cyberpunk2077</p>
           </div>
-          <img src={require("../../assets/cyberpunk.jpg")}></img>
+          <img
+            src={require("../../assets/cyberpunk.jpg")}
+            alt="cyberpunk"
+          ></img>
           <div className="contentBox"></div>
         </div>
       </div>
