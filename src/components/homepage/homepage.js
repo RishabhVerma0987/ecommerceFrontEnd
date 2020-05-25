@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { topGamesBanner } from "../../store/actions";
+import Navbar from "../navbar/navbar";
 import "./homepage.scss";
 function Homepage() {
   const dispatch = useDispatch();
@@ -22,45 +23,48 @@ function Homepage() {
     setScale([...temp]);
   };
   return (
-    <div className="homepageBanner">
-      <div className="content">
-        <h1>
-          Browse Best Games <br />
-          Online
-        </h1>
-        <p>at very affordable prices!!</p>
-        <button>Browse All</button>
-      </div>
-      {stateTopGames ? (
-        <div className="upcommingGames">
-          {stateTopGames.map((game) => {
-            return (
-              <div
-                className="box"
-                key={game.id}
-                style={{
-                  transform: `scale(${scale[game.id - 1]})`,
-                  opacity: scale[game.id - 1] === 1 ? 1 : 0.5,
-                }}
-                onMouseEnter={() => changeScale(game.id - 1)}
-                onMouseLeave={() => {
-                  setScale([1, 0.8, 0.8]);
-                }}
-              >
-                <div className="nameBox">
-                  <p>{game.game_name}</p>
-                </div>
-                <img
-                  src={require(`../../assets/${game.image_name}.jpg`)}
-                  alt={game.image_name}
-                ></img>
-                <div className="contentBox"></div>
-              </div>
-            );
-          })}
+    <React.Fragment>
+      <Navbar />
+      <div className="homepageBanner">
+        <div className="content">
+          <h1>
+            Browse Best Games <br />
+            Online
+          </h1>
+          <p>at very affordable prices!!</p>
+          <button>Browse All</button>
         </div>
-      ) : null}
-    </div>
+        {stateTopGames ? (
+          <div className="upcommingGames">
+            {stateTopGames.map((game) => {
+              return (
+                <div
+                  className="box"
+                  key={game.id}
+                  style={{
+                    transform: `scale(${scale[game.id - 1]})`,
+                    opacity: scale[game.id - 1] === 1 ? 1 : 0.5,
+                  }}
+                  onMouseEnter={() => changeScale(game.id - 1)}
+                  onMouseLeave={() => {
+                    setScale([1, 0.8, 0.8]);
+                  }}
+                >
+                  <div className="nameBox">
+                    <p>{game.game_name}</p>
+                  </div>
+                  <img
+                    src={require(`../../assets/${game.image_name}.jpg`)}
+                    alt={game.image_name}
+                  ></img>
+                  <div className="contentBox"></div>
+                </div>
+              );
+            })}
+          </div>
+        ) : null}
+      </div>
+    </React.Fragment>
   );
 }
 export default Homepage;
