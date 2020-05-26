@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "image_name": "cyberpunk",
+    "title": "Cyberpunk 2077",
+    "description": "New Big Expansion ,changes the whole world",
+    "rating": 3.5
+  },
+  {
+    "id": 2,
+    "image_name": "callofduty",
+    "title": "Call of duty , BO3",
+    "description": "Open world ,Battle royal & more",
+    "rating": 4.2
+  },
+  {
+    "id": 3,
+    "image_name": "apex",
+    "title": "Apex lengends",
+    "description": "Battle royal , free to play",
+    "rating": 4.5
+  }
+]

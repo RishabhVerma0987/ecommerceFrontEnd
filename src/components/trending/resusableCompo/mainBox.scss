@@ -29,6 +29,9 @@ $borderRadius: 5px;
     width: 100%;
     height: 90%;
     padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+
     .card {
       min-height: 315px;
       min-width: 319px;
@@ -39,11 +42,17 @@ $borderRadius: 5px;
       .image {
         width: 100%;
         height: 100%;
+        overflow: hidden;
         img {
           border-radius: $borderRadius;
           width: 100%;
           height: 100%;
           object-fit: cover;
+          transition: all 0.5s ease-in-out;
+          &:hover {
+            transform: scale(1.2);
+            cursor: pointer;
+          }
         }
       }
       .info {
@@ -62,6 +71,9 @@ $borderRadius: 5px;
         h5 {
           font-family: $fontNew;
           color: $whiteColor;
+          &:hover {
+            cursor: pointer;
+          }
         }
         p {
           margin-top: -20px;
@@ -90,9 +102,15 @@ $borderRadius: 5px;
           .cart-wish {
             .cart {
               margin-right: 1rem;
+              &:hover {
+                cursor: pointer;
+              }
             }
             img {
               height: 20px;
+              &:hover {
+                cursor: pointer;
+              }
             }
           }
         }
