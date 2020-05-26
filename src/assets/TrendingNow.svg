@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2509" height="520" viewBox="0 0 2509 520">
+  <defs>
+    <filter id="Trending_Now" x="0" y="0" width="2509" height="520" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feFlood flood-color="#f1d18a" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Trending_Now)">
+    <text id="Trending_Now-2" data-name="Trending Now" stroke-linecap="round" fill="none" stroke="#f1d18a" transform="translate(23 414)" stroke-width="5" font-size="407" font-family="HelveticaNeueLight, HelveticaNeue" opacity="0.23"><tspan x="0" y="0">Trending Now</tspan></text>
+  </g>
+</svg>

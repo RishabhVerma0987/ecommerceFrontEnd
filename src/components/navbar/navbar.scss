@@ -39,8 +39,12 @@
         justify-content: space-evenly;
         li {
           font-size: 2rem;
+          border-bottom: 2px solid transparent;
+          transition: all 0.3s ease-in-out;
           &:hover {
             cursor: pointer;
+            border-bottom: 2px solid $redColor;
+            color: $whiteColor;
           }
         }
       }
@@ -61,8 +65,12 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          border-bottom: 2px solid transparent;
+          transition: all 0.3s ease-in-out;
           &:hover {
             cursor: pointer;
+            border-bottom: 2px solid $redColor;
+            color: $whiteColor;
           }
           img {
             width: 70%;

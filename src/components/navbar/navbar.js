@@ -29,10 +29,10 @@ function Navbar() {
           <div className="right-links">
             <ul>
               <li>Login</li>
-              <li>
+              <li className="cart">
                 <img src={require("../../assets/cart.svg")} alt="cart"></img>
               </li>
-              <li>
+              <li className="wishlist">
                 <img
                   src={require("../../assets/wishlist.svg")}
                   alt="cart"
