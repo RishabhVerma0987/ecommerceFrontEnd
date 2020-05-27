@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { topGamesBanner } from "../../store/actions";
 import Navbar from "../navbar/navbar";
 import "./homepage.scss";
+import Background from "../background/background";
 function Homepage() {
   const dispatch = useDispatch();
   const stateTopGames = useSelector((state) => state.bannerTopGamesReducer);
@@ -24,6 +25,7 @@ function Homepage() {
   };
   return (
     <React.Fragment>
+      <Background image={"banner"} bgColor={"#1a4c31"} />
       <Navbar />
       <div className="homepageBanner">
         <div className="content">
