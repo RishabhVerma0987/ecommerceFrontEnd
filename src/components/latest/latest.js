@@ -6,7 +6,9 @@ function Latest() {
     <React.Fragment>
       <div className="latest">
         <Background image={"cyberpunk"} bgColor={"#1f2227"} />
-        <h1>hello</h1>
+        <div className="latest-content">
+          <h1>Latest Edition</h1>
+        </div>
       </div>
     </React.Fragment>
   );
