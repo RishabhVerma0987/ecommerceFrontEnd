@@ -11,6 +11,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    .card-list-mobile {
+      display: none;
+    }
     .card-list {
       margin-top: 2rem;
       width: 100%;
@@ -42,6 +45,73 @@
           font-family: $fontNew;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .latest {
+    .latest-content {
+      .card-list {
+        display: none;
+      }
+      .card-list-mobile {
+        margin-top: 2rem;
+        width: 100%;
+        height: 95%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        min-height: 0;
+        min-width: 0;
+        row-gap: 2rem;
+        column-gap: 2rem;
+        .card {
+          position: relative;
+          overflow: hidden; /* NEW */
+          min-width: 0; /* NEW; needed for Firefox */
+          border-radius: 5px;
+          h2 {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: $fontNew;
+            font-size: 2.5rem;
+            //font-weight: 700;
+            background-color: rgba($color: #000000, $alpha: 1);
+            padding: 1rem;
+            border-radius: 5px;
+          }
+          img {
+            border-radius: 5px;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 593px) {
+  .latest {
+    height: 60vh !important;
+    .latest-content {
+      width: 90% !important;
+      .card-list-mobile {
+        height: 70% !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 446px) {
+  .latest-content {
+    width: 90% !important;
+    .card-list-mobile {
+      height: 60% !important;
     }
   }
 }

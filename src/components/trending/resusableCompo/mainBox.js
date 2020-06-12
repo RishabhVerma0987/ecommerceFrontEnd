@@ -18,7 +18,7 @@ function MainBox() {
         {stateTrendingGames
           ? stateTrendingGames.map((i) => {
               return (
-                <div className="card">
+                <div className="card" key={i.id}>
                   <div className="image">
                     <img
                       src={require(`../../../assets/${i.image_name}.jpg`)}

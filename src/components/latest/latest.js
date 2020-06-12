@@ -1,6 +1,7 @@
 import React from "react";
 import "./latest.scss";
 import Background from "../background/background";
+import LatestMobile from "./latest-mobile";
 function Latest() {
   return (
     <React.Fragment>
@@ -38,6 +39,7 @@ function Latest() {
               ></img>
             </div>
           </div>
+          <LatestMobile />
         </div>
       </div>
     </React.Fragment>
