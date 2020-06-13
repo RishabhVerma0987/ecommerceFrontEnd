@@ -5,6 +5,11 @@
   height: 80vh;
   background-color: $darkColor;
   position: relative;
+  h2 {
+    &:hover {
+      cursor: pointer;
+    }
+  }
   .back-text {
     display: none;
     // width: 100%;

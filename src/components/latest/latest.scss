@@ -39,10 +39,14 @@
         }
         h2 {
           position: absolute;
-          top: 0;
+          bottom: 50%;
           left: 0;
-          transform: translate(-57%, 150%) rotate(90deg);
+          transform: translate(-50%, 0%) rotate(270deg);
           font-family: $fontNew;
+          background-color: black;
+          padding: 0rem 2rem 0rem 2rem;
+          border-radius: 5px;
+          backdrop-filter: blur(15px);
         }
       }
     }
@@ -114,4 +118,10 @@
       height: 60% !important;
     }
   }
+}
+#preloadedImages {
+  width: 0px;
+  height: 0px;
+  display: block;
+  background-image: url("https://media1.giphy.com/media/jVAt83ieT49H6ja5Ty/giphy.gif?cid=ecf05e47f12a83303a57a86710ab88e44373bcfcd8e263f2&rid=giphy.gif");
 }
