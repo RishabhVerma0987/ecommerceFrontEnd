@@ -1,24 +1,19 @@
 import React from "react";
 
-function Latest_Mobile() {
+function Latest_Mobile({ data }) {
   return (
     <div className="card-list-mobile">
-      <div className="card">
-        <h2>cyberpunk</h2>
-        <img src={require("../../assets/cyberpunk.jpg")} alt="cyberpunk"></img>
-      </div>
-      <div className="card">
-        <h2>cyberpunk</h2>
-        <img src={require("../../assets/cyberpunk.jpg")} alt="cyberpunk"></img>
-      </div>
-      <div className="card">
-        <h2>cyberpunk</h2>
-        <img src={require("../../assets/cyberpunk.jpg")} alt="cyberpunk"></img>
-      </div>
-      <div className="card">
-        <h2>cyberpunk</h2>
-        <img src={require("../../assets/cyberpunk.jpg")} alt="cyberpunk"></img>
-      </div>
+      {data?.map((game) => {
+        return (
+          <div className="card" key={game.id}>
+            <h2>{game.name}</h2>
+            <img
+              src={require(`../../assets/${game.name}.jpg`)}
+              alt={game.name}
+            ></img>
+          </div>
+        );
+      })}
     </div>
   );
 }

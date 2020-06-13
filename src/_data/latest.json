@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "cyberpunk",
+    "gif": "https://media1.giphy.com/media/jVAt83ieT49H6ja5Ty/giphy.gif?cid=ecf05e47f12a83303a57a86710ab88e44373bcfcd8e263f2&rid=giphy.gif"
+  },
+  {
+    "id": 2,
+    "name": "apex",
+    "gif": "https://media1.giphy.com/media/jVAt83ieT49H6ja5Ty/giphy.gif?cid=ecf05e47f12a83303a57a86710ab88e44373bcfcd8e263f2&rid=giphy.gif"
+  },
+  {
+    "id": 3,
+    "name": "callofduty",
+    "gif": "https://media1.giphy.com/media/jVAt83ieT49H6ja5Ty/giphy.gif?cid=ecf05e47f12a83303a57a86710ab88e44373bcfcd8e263f2&rid=giphy.gif"
+  },
+  {
+    "id": 4,
+    "name": "banner",
+    "gif": "https://media1.giphy.com/media/jVAt83ieT49H6ja5Ty/giphy.gif?cid=ecf05e47f12a83303a57a86710ab88e44373bcfcd8e263f2&rid=giphy.gif"
+  }
+]
