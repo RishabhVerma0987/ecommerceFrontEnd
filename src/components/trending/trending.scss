@@ -34,3 +34,8 @@
     height: 50vh !important;
   }
 }
+@media (max-height: 760px) {
+  .trending {
+    min-height: 500px;
+  }
+}
