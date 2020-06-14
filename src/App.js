@@ -12,7 +12,7 @@ function App() {
       <Trending />
       <Latest />
       <Ps4XboxGames platform={"PS4"} />
-      {/* <Ps4XboxGames platform={"XBOX"} /> */}
+      <Ps4XboxGames platform={"XBOX"} />
       {/* <Payment /> */}
     </div>
   );
