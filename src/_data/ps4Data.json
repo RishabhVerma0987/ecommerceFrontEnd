@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "game_name": "Cyberpunk 2077",
+    "image_name": "cyberpunk",
+    "price": "25.00",
+    "rating": "4.5"
+  },
+  {
+    "id": 2,
+    "game_name": "Apex lengends",
+    "image_name": "apex",
+    "price": "35.00",
+    "rating": "4"
+  },
+  {
+    "id": 3,
+    "game_name": "Call of duty",
+    "image_name": "callofduty",
+    "price": "45.00",
+    "rating": "3.5"
+  },
+  {
+    "id": 4,
+    "game_name": "Black OPS",
+    "image_name": "banner",
+    "price": "15.00",
+    "rating": "4.5"
+  },
+  {
+    "id": 5,
+    "game_name": "Final Fantasy",
+    "image_name": "final",
+    "price": "35.00",
+    "rating": "4.8"
+  },
+  {
+    "id": 6,
+    "game_name": "Last of Us",
+    "image_name": "lastofus",
+    "price": "25.00",
+    "rating": "4.0"
+  },
+  {
+    "id": 7,
+    "game_name": "Last of Us 2",
+    "image_name": "lou",
+    "price": "20.00",
+    "rating": "4.0"
+  },
+  {
+    "id": 8,
+    "game_name": "Another",
+    "image_name": "lounew",
+    "price": "45.00",
+    "rating": "2.5"
+  }
+]
