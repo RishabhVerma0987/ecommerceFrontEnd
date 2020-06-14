@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import "./mainBox.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { trendingGames } from "../../../store/actions";
+import CartSVG from "../../resuables/cartSVG";
+import WishListSVG from "../../resuables/wishlistSVG";
+
 function MainBox() {
   const dispatch = useDispatch();
   const stateTrendingGames = useSelector((state) => state.trendingGamesReducer);
@@ -35,15 +38,12 @@ function MainBox() {
                         <p>{i.rating}</p>
                       </div>
                       <div className="cart-wish">
-                        <img
-                          className="cart"
-                          src={require("../../../assets/cart.svg")}
-                          alt="cart"
-                        ></img>
-                        <img
-                          src={require("../../../assets/wishlist.svg")}
-                          alt="cart"
-                        ></img>
+                        <div style={{ marginRight: "1rem" }}>
+                          <CartSVG />
+                        </div>
+                        <div>
+                          <WishListSVG />
+                        </div>
                       </div>
                     </div>
                   </div>

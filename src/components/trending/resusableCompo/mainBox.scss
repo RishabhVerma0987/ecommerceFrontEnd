@@ -101,6 +101,7 @@ $borderRadius: 5px;
             }
           }
           .cart-wish {
+            display: flex;
             .cart {
               margin-right: 1rem;
               &:hover {
@@ -202,20 +203,6 @@ $borderRadius: 5px;
                 margin-top: 0rem;
                 margin-left: 1rem;
                 font-size: 2rem;
-              }
-            }
-            .cart-wish {
-              .cart {
-                margin-right: 1rem;
-                &:hover {
-                  cursor: pointer;
-                }
-              }
-              img {
-                height: 20px;
-                &:hover {
-                  cursor: pointer;
-                }
               }
             }
           }
