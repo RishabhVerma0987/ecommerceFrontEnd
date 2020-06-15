@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./navbar.scss";
-function Navbar() {
+function Navbar({ color }) {
   const [open, setOpen] = useState(false);
 
   const openNav = () => {
@@ -13,7 +13,7 @@ function Navbar() {
 
   return (
     <React.Fragment>
-      <div className="navbar">
+      <div className="navbar" style={{ backgroundColor: color }}>
         <div className="logo">
           <img src={require("../../../assets/logo.svg")} alt="LOGO"></img>
         </div>
@@ -42,7 +42,7 @@ function Navbar() {
           </div>
         </div>
       </div>
-      <div className="navbar-mobile">
+      <div className="navbar-mobile" style={{ backgroundColor: color }}>
         <div className="logo">
           <img src={require("../../../assets/logo.svg")} alt="LOGO"></img>
         </div>

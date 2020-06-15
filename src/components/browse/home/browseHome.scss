@@ -1,0 +1,136 @@
+@import "../../../global/global";
+@mixin ButtonDesign($primaryColor, $primaryShadow) {
+  width: max-content;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  background-color: $primaryColor;
+  border-radius: 4px;
+  box-shadow: 0px 0px 59px 5px $primaryShadow;
+  transition: all 0.3s ease-in-out;
+  color: $goldenColor;
+}
+
+@mixin CheckboxDesign($color) {
+  .styled-checkbox {
+    position: absolute; // take it out of document flow
+    opacity: 0; // hide it
+
+    & + label {
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    // Box.
+    & + label:before {
+      content: "";
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 0.5rem;
+      width: 16px;
+      height: 16px;
+      background: transparent;
+      border: 2px solid #404040;
+      transition: 0.2s;
+    }
+
+    // Box hover
+    &:hover + label:before {
+      background: $color;
+      border: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    // Box focus
+    &:focus + label:before {
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+    }
+
+    // Box checked
+    &:checked + label:before {
+      background: $color;
+      border: 2px solid transparent;
+    }
+
+    // Disabled state label.
+    &:disabled + label {
+      color: #b8b8b8;
+      cursor: auto;
+    }
+
+    // Disabled box.
+    &:disabled + label:before {
+      box-shadow: none;
+      background: #ddd;
+    }
+
+    // Checkmark. Could be replaced with an image
+    &:checked + label:after {
+      content: "";
+      position: absolute;
+      left: 4.5px;
+      top: 13px;
+      background: $goldenColor;
+      width: 2px;
+      height: 2px;
+      box-shadow: 2px 0 0 $goldenColor, 4px 0 0 $goldenColor,
+        4px -2px 0 $goldenColor, 4px -4px 0 $goldenColor,
+        4px -6px 0 $goldenColor, 4px -8px 0 $goldenColor;
+      transform: rotate(45deg);
+      border: none;
+    }
+  }
+}
+
+.browseHome {
+  width: 100%;
+  height: 80vh; //not fixed
+  background-color: #29282f;
+  display: flex;
+  .filter {
+    min-width: 276px;
+    width: 20%;
+    height: 100%; //not fixed
+    background-color: red;
+    padding: 2rem;
+    .box {
+      border-radius: 10px;
+      background-color: #1f2227;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 0rem 2rem 2rem 2rem;
+      .platform,
+      .genre {
+        margin-top: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        ul {
+          margin-top: 1rem;
+          display: flex;
+          flex-direction: column;
+          li {
+            @include CheckboxDesign($redColor);
+          }
+        }
+      }
+
+      .platform {
+        h5 {
+          @include ButtonDesign($darkGreenColor, $darkGreenColor);
+        }
+      }
+      .genre {
+        h5 {
+          @include ButtonDesign($redColor, $redColor);
+        }
+      }
+    }
+  }
+  .showcase {
+    width: 80%;
+    height: 100%; //not fixed
+    background-color: rebeccapurple;
+  }
+}
