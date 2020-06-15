@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { topGamesBanner } from "../../store/actions";
+import { topGamesBanner } from "../../../store/actions";
 import Navbar from "../navbar/navbar";
 import "./homepage.scss";
 import Background from "../background/background";
@@ -56,7 +56,7 @@ function Homepage() {
                     <p>{game.game_name}</p>
                   </div>
                   <img
-                    src={require(`../../assets/${game.image_name}.jpg`)}
+                    src={require(`../../../assets/${game.image_name}.jpg`)}
                     alt={game.image_name}
                   ></img>
                   <div className="contentBox"></div>

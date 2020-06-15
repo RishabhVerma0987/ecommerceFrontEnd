@@ -8,7 +8,7 @@ function Latest_Mobile({ data }) {
           <div className="card" key={game.id}>
             <h2>{game.name}</h2>
             <img
-              src={require(`../../assets/${game.name}.jpg`)}
+              src={require(`../../../assets/${game.name}.jpg`)}
               alt={game.name}
             ></img>
           </div>

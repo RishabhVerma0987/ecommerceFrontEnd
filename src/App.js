@@ -1,8 +1,8 @@
 import React from "react";
-import Homepage from "./components/homepage/homepage";
-import Trending from "./components/trending/trending";
-import Latest from "./components/latest/latest";
-import Ps4XboxGames from "./components/ps4XboxGames/ps4XboxGames";
+import Homepage from "./components/main/homepage/homepage";
+import Trending from "./components/main/trending/trending";
+import Latest from "./components/main/latest/latest";
+import Ps4XboxGames from "./components/main/ps4XboxGames/ps4XboxGames";
 //import Payment from "./components/paymentTesting/paymentTesting";
 import "./App.scss";
 function App() {

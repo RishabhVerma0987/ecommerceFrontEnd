@@ -15,7 +15,7 @@ function Navbar() {
     <React.Fragment>
       <div className="navbar">
         <div className="logo">
-          <img src={require("../../assets/logo.svg")} alt="LOGO"></img>
+          <img src={require("../../../assets/logo.svg")} alt="LOGO"></img>
         </div>
         <div className="nav-items">
           <div className="links">
@@ -30,11 +30,11 @@ function Navbar() {
             <ul>
               <li>Login</li>
               <li className="cart">
-                <img src={require("../../assets/cart.svg")} alt="cart"></img>
+                <img src={require("../../../assets/cart.svg")} alt="cart"></img>
               </li>
               <li className="wishlist">
                 <img
-                  src={require("../../assets/wishlist.svg")}
+                  src={require("../../../assets/wishlist.svg")}
                   alt="cart"
                 ></img>
               </li>
@@ -44,15 +44,18 @@ function Navbar() {
       </div>
       <div className="navbar-mobile">
         <div className="logo">
-          <img src={require("../../assets/logo.svg")} alt="LOGO"></img>
+          <img src={require("../../../assets/logo.svg")} alt="LOGO"></img>
         </div>
         <div className="nav-items">
           <ul>
             <li>
-              <img src={require("../../assets/cart.svg")} alt="cart"></img>
+              <img src={require("../../../assets/cart.svg")} alt="cart"></img>
             </li>
             <li>
-              <img src={require("../../assets/wishlist.svg")} alt="cart"></img>
+              <img
+                src={require("../../../assets/wishlist.svg")}
+                alt="cart"
+              ></img>
             </li>
             <li
               className="hamburger"

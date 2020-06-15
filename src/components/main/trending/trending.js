@@ -15,7 +15,7 @@ function Trending() {
   return (
     <div className="trending">
       <div className="back-text">
-        <img src={require("../../assets/TrendingNow.svg")} alt=" "></img>
+        <img src={require("../../../assets/TrendingNow.svg")} alt=" "></img>
       </div>
       {/* <h2
         onMouseEnter={(e) => showDiv(e)}

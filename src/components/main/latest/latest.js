@@ -3,7 +3,7 @@ import "./latest.scss";
 import Background from "../background/background";
 import LatestMobile from "./latest-mobile";
 import { useDispatch, useSelector } from "react-redux";
-import { latestGames } from "../../store/actions";
+import { latestGames } from "../../../store/actions";
 function Latest() {
   const dispatch = useDispatch();
   const latestGamesReducer = useSelector((state) => state.latestGamesReducer);
@@ -26,7 +26,7 @@ function Latest() {
                   <h2>{game.name}</h2>
 
                   <img
-                    src={require(`../../assets/${game.name}.jpg`)}
+                    src={require(`../../../assets/${game.name}.jpg`)}
                     alt={game.name}
                   ></img>
                 </div>

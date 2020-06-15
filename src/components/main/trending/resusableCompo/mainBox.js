@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./mainBox.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { trendingGames } from "../../../store/actions";
+import { trendingGames } from "../../../../store/actions";
 import CartSVG from "../../resuables/cartSVG";
 import WishListSVG from "../../resuables/wishlistSVG";
 
@@ -24,7 +24,7 @@ function MainBox() {
                 <div className="card" key={i.id}>
                   <div className="image">
                     <img
-                      src={require(`../../../assets/${i.image_name}.jpg`)}
+                      src={require(`../../../../assets/${i.image_name}.jpg`)}
                       alt="cyberpunk"
                     ></img>
                   </div>

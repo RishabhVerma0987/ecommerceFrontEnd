@@ -6,7 +6,10 @@ function Card({ gameName, imageName, price, rating, key }) {
   return (
     <div className="productCard">
       <div className="dp">
-        <img src={require(`../../assets/${imageName}.jpg`)} alt={imageName} />
+        <img
+          src={require(`../../../assets/${imageName}.jpg`)}
+          alt={imageName}
+        />
       </div>
       <div className="info">
         <div className="buy">

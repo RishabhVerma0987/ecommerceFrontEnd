@@ -1,4 +1,4 @@
-@import "../../../global/global";
+@import "../../../../global/global";
 $borderRadius: 5px;
 @mixin ButtonDesign($primaryColor, $primaryShadow) {
   width: max-content;
