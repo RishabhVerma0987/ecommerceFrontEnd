@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./browseHome.scss";
 import Navbar from "../../main/navbar/navbar";
 import AnimateHeight from "react-animate-height";
+import { useDispatch, useSelector } from "react-redux";
+import { ps4Games } from "../../../store/actions/index";
+import Card from "../../main/resuables/card";
 function BrowseHome() {
   const category = [
     {
@@ -41,8 +44,14 @@ function BrowseHome() {
       id: 4,
     },
   ];
+  useEffect(() => {
+    dispatch(ps4Games());
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [height, setHeight] = useState(0);
+  const dispatch = useDispatch();
+  const games = useSelector((state) => state.ps4GamesReducer);
 
   const toggle = () => {
     if (height === 0) {
@@ -129,7 +138,19 @@ function BrowseHome() {
             </div>
           </AnimateHeight>
         </div>
-        <div className="showcase"></div>
+        <div className="showcase">
+          {games?.map((i) => {
+            return (
+              <Card
+                gameName={i.game_name}
+                imageName={i.image_name}
+                price={i.price}
+                rating={i.rating}
+                key={i.id}
+              />
+            );
+          })}
+        </div>
       </div>
     </React.Fragment>
   );

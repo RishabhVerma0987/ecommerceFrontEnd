@@ -143,17 +143,46 @@
     display: none;
   }
   .showcase {
+    padding-right: 4rem;
+    padding-top: 4rem;
     width: 80%;
     height: 100%; //not fixed
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 4rem;
+    row-gap: 4rem;
   }
 }
 
+@media (max-width: 1162px) {
+  .browseHome {
+    .showcase {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+@media (max-width: 650px) {
+  .browseHome {
+    .showcase {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+@media (max-width: 440px) {
+  .browseHome {
+    .showcase {
+      padding-left: 2rem !important;
+      padding-right: 2rem;
+    }
+  }
+}
 @media (max-width: 862px) {
   .browseHome {
     display: flex;
     flex-direction: column;
     .showcase {
       width: 100%;
+      padding-left: 4rem;
     }
     .filter {
       display: none;
