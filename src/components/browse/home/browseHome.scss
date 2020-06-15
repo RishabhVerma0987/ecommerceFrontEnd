@@ -13,7 +13,9 @@
   .styled-checkbox {
     position: absolute; // take it out of document flow
     opacity: 0; // hide it
-
+    z-index: 5;
+    width: 2rem;
+    height: 2rem;
     & + label {
       position: relative;
       cursor: pointer;
@@ -80,18 +82,26 @@
       border: none;
     }
   }
+  // @media (max-width: 862px) {
+  //   .styled-checkbox {
+  //     &:hover + label:before {
+  //       background: $color;
+  //       border: 2px solid transparent;
+  //       transition: 0.2s;
+  //     }
+  //   }
+  // }
 }
 
 .browseHome {
   width: 100%;
-  height: 80vh; //not fixed
+  min-height: 500px; //not fixed
   background-color: #29282f;
   display: flex;
   .filter {
     min-width: 276px;
     width: 20%;
     height: 100%; //not fixed
-    background-color: red;
     padding: 2rem;
     .box {
       border-radius: 10px;
@@ -128,9 +138,97 @@
       }
     }
   }
+
+  .filter-mobile {
+    display: none;
+  }
   .showcase {
     width: 80%;
     height: 100%; //not fixed
-    background-color: rebeccapurple;
+  }
+}
+
+@media (max-width: 862px) {
+  .browseHome {
+    display: flex;
+    flex-direction: column;
+    .showcase {
+      width: 100%;
+    }
+    .filter {
+      display: none;
+    }
+    .filter-mobile {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: min-content;
+      .controls {
+        display: flex;
+        justify-content: space-evenly;
+
+        .filt,
+        .sort {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          p {
+            font-size: 4rem;
+          }
+        }
+        .sort {
+          border-left: 1px solid black;
+        }
+      }
+      .menu {
+        .apply {
+          button {
+            font-size: 3rem;
+            width: 100%;
+            border: none;
+            height: 50px;
+            background-color: $redColor;
+            border-radius: 0px 0px 5px 5px;
+          }
+        }
+        .box {
+          background-color: #1f2227;
+          width: 100%;
+          max-height: 450px;
+          display: flex;
+          flex-direction: column;
+          padding: 0rem 2rem 2rem 2rem;
+          overflow: auto;
+          .Platform,
+          .Genre {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            ul {
+              margin-top: 1rem;
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              grid-template-rows: 1fr 1fr;
+
+              li {
+                @include CheckboxDesign($redColor);
+              }
+            }
+          }
+
+          .Platform {
+            h5 {
+              @include ButtonDesign($darkGreenColor, $darkGreenColor);
+            }
+          }
+          .Genre {
+            h5 {
+              @include ButtonDesign($redColor, $redColor);
+            }
+          }
+        }
+      }
+    }
   }
 }
