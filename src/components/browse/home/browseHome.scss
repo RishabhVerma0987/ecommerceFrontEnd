@@ -101,8 +101,8 @@
       display: flex;
       flex-direction: column;
       padding: 0rem 2rem 2rem 2rem;
-      .platform,
-      .genre {
+      .Platform,
+      .Genre {
         margin-top: 2.5rem;
         display: flex;
         flex-direction: column;
@@ -116,12 +116,12 @@
         }
       }
 
-      .platform {
+      .Platform {
         h5 {
           @include ButtonDesign($darkGreenColor, $darkGreenColor);
         }
       }
-      .genre {
+      .Genre {
         h5 {
           @include ButtonDesign($redColor, $redColor);
         }
