@@ -5,45 +5,31 @@ import AnimateHeight from "react-animate-height";
 import { useDispatch, useSelector } from "react-redux";
 import { ps4Games } from "../../../store/actions/index";
 import Card from "../../main/resuables/card";
+var array = require("lodash/array");
 function BrowseHome() {
-  const category = [
+  const categoryList = [
     {
       title: "Platform",
       values: [
-        { id: 1, name: "PS4" },
-        { id: 2, name: "XBOX" },
-        { id: 3, name: "PC" },
+        { id: 1, name: "PS4", checked: false },
+        { id: 2, name: "XBOX", checked: false },
+        { id: 3, name: "PC", checked: false },
       ],
       id: 1,
     },
     {
       title: "Genre",
       values: [
-        { id: 1, name: "RPG" },
-        { id: 2, name: "Racing" },
-        { id: 3, name: "Horror" },
+        { id: 1, name: "RPG", checked: false },
+        { id: 2, name: "Racing", checked: false },
+        { id: 3, name: "Horror", checked: false },
       ],
       id: 2,
     },
-    {
-      title: "Platform",
-      values: [
-        { id: 1, name: "PS4" },
-        { id: 2, name: "XBOX" },
-        { id: 3, name: "PC" },
-      ],
-      id: 3,
-    },
-    {
-      title: "Genre",
-      values: [
-        { id: 1, name: "RPG" },
-        { id: 2, name: "Racing" },
-        { id: 3, name: "Horror" },
-      ],
-      id: 4,
-    },
   ];
+
+  const [category, setCategory] = useState(categoryList);
+
   useEffect(() => {
     dispatch(ps4Games());
 
@@ -53,11 +39,78 @@ function BrowseHome() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.ps4GamesReducer);
 
+  const [selectedCategory, setSelectedCategory] = useState([]);
+
   const toggle = () => {
     if (height === 0) {
       setHeight("auto");
     } else {
       setHeight(0);
+    }
+  };
+
+  const clearCategory = (value) => {
+    //extract title
+    let flag = 0;
+    let title = "";
+    for (let i = 0; i < category.length; i++) {
+      let arr = category[i].values;
+      if (flag === 0) {
+        for (let j = 0; j < arr.length; j++) {
+          if (arr[j].name === value) {
+            title = category[i].title;
+            flag = 1;
+            break;
+          }
+        }
+      } else {
+        break;
+      }
+    }
+    //call remove helper
+    removeHelper(value, title);
+  };
+
+  const removeHelper = (value, title) => {
+    let arr = array.remove(selectedCategory, (n) => {
+      return n !== value;
+    });
+    setSelectedCategory([...arr]);
+
+    let tempCategory = category;
+    tempCategory = checkboxHelper(tempCategory, title, value, false);
+    setCategory([...tempCategory]);
+  };
+
+  const checkboxHelper = (tempCategory, title, value, bool) => {
+    for (let i = 0; i < tempCategory.length; i++) {
+      if (tempCategory[i].title === title) {
+        // console.log(tempCategory[i].title, title);
+
+        for (let j = 0; j < tempCategory[i].values.length; j++) {
+          if (tempCategory[i].values[j].name === value) {
+            tempCategory[i].values[j].checked = bool;
+          }
+        }
+      }
+    }
+    return tempCategory;
+  };
+
+  const onSelectCategory = (e, title) => {
+    let value = e.target.value;
+
+    let temp = selectedCategory;
+    let tempCategory = category;
+
+    if (selectedCategory.includes(value)) {
+      removeHelper(value, title);
+    } else {
+      temp.push(value);
+
+      tempCategory = checkboxHelper(tempCategory, title, value, true);
+      setCategory([...tempCategory]);
+      setSelectedCategory([...temp]);
     }
   };
 
@@ -79,7 +132,9 @@ function BrowseHome() {
                             class="styled-checkbox"
                             id={`styled-checkbox-${i.id}-${j.id}`}
                             type="checkbox"
-                            value={`value${j.id}`}
+                            value={j.name}
+                            onChange={(e) => onSelectCategory(e, i.title)}
+                            checked={j.checked}
                           />
                           <label for={`styled-checkbox-${i.id}-${j.id}`}>
                             {j.name}
@@ -139,17 +194,33 @@ function BrowseHome() {
           </AnimateHeight>
         </div>
         <div className="showcase">
-          {games?.map((i) => {
-            return (
-              <Card
-                gameName={i.game_name}
-                imageName={i.image_name}
-                price={i.price}
-                rating={i.rating}
-                key={i.id}
-              />
-            );
-          })}
+          <div className="filter-options">
+            <ul>
+              {selectedCategory.map((i) => {
+                return (
+                  <li>
+                    <div className="selected">
+                      {i}
+                      <p onClick={() => clearCategory(i)}>%</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="card-showcase">
+            {games?.map((i) => {
+              return (
+                <Card
+                  gameName={i.game_name}
+                  imageName={i.image_name}
+                  price={i.price}
+                  rating={i.rating}
+                  key={i.id}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </React.Fragment>

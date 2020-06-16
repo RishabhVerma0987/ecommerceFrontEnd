@@ -144,13 +144,41 @@
   }
   .showcase {
     padding-right: 4rem;
-    padding-top: 4rem;
+    padding-top: 2rem;
     width: 80%;
     height: 100%; //not fixed
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 4rem;
-    row-gap: 4rem;
+    display: flex;
+    flex-direction: column;
+    .filter-options {
+      width: 100%;
+      ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        li {
+          font-size: 1.5rem;
+          background-color: $darkestColor;
+          padding: 1rem 2rem 1rem 2rem;
+          margin-left: 2rem;
+          border-radius: 30px;
+          .selected {
+            display: flex;
+            p {
+              font-size: 1.5rem;
+              margin-left: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+    .card-showcase {
+      padding-top: 2rem;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 4rem;
+      row-gap: 4rem;
+    }
   }
 }
 
