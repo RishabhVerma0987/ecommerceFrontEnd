@@ -175,7 +175,9 @@ function BrowseHome() {
                               class="styled-checkbox"
                               id={`styled-checkbox-${i.id}-${j.id}`}
                               type="checkbox"
-                              value={`value${j.id}`}
+                              value={j.name}
+                              onChange={(e) => onSelectCategory(e, i.title)}
+                              checked={j.checked}
                             />
                             <label for={`styled-checkbox-${i.id}-${j.id}`}>
                               {j.name}

@@ -185,14 +185,18 @@
 @media (max-width: 1162px) {
   .browseHome {
     .showcase {
-      grid-template-columns: repeat(2, 1fr);
+      .card-showcase {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   }
 }
 @media (max-width: 650px) {
   .browseHome {
     .showcase {
-      grid-template-columns: repeat(1, 1fr);
+      .card-showcase {
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
   }
 }
