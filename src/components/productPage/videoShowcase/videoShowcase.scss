@@ -1,0 +1,42 @@
+.video-showcase {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .main-video {
+    min-height: 300px;
+    width: 100%;
+    height: 70%;
+    position: relative;
+    //padding-top: 56.25%;
+    .react-player {
+      padding: 0rem 6rem 0rem 4rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  .other-videos {
+    min-height: 100px;
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 2rem 6rem 2rem 4rem;
+    .element {
+      flex: 1;
+      height: 100%;
+      padding-right: 2rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+    }
+    .last {
+      padding-right: 0rem;
+    }
+  }
+}

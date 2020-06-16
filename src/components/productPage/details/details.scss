@@ -1,0 +1,118 @@
+@import "../../../global/global";
+@mixin ButtonDesign($primaryColor, $primaryShadow, $border, $fontColor) {
+  width: max-content;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  background-color: $primaryColor;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+  color: $goldenColor;
+  border: 1px solid $border;
+  color: $fontColor;
+}
+.details {
+  width: 40%;
+  //background-color: chocolate;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 4rem 2rem 2rem;
+  .title {
+    p {
+      width: fit-content;
+      font-size: 6rem;
+      border-bottom: 4px solid $redColor;
+    }
+  }
+  .rating {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    p {
+      font-size: 2.5rem;
+      color: $whiteColor;
+    }
+    .feedback {
+      font-size: 1.5rem;
+      margin-left: 1rem;
+      @include ButtonDesign(
+        $greenShade,
+        $greenShade,
+        transparent,
+        $goldenColor
+      );
+    }
+  }
+
+  .description {
+    margin-top: 1rem;
+    p {
+      font-size: 1.5rem;
+      word-spacing: 0.5rem;
+      color: $whiteColor;
+      font-family: $fontNew;
+    }
+  }
+  .price {
+    margin-top: 6rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      font-size: 6rem;
+      font-family: $fontNew;
+    }
+    .off {
+      padding-left: 2rem;
+      .tag {
+        font-size: 3rem;
+        color: $redColor;
+        text-decoration-line: line-through;
+      }
+      .style {
+        font-size: 1.5rem;
+        font-family: $fontNew;
+        @include ButtonDesign(
+          $darkGreenColor,
+          $darkGreenColor,
+          transparent,
+          $goldenColor
+        );
+      }
+    }
+  }
+  .control {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    button {
+      flex: 1;
+      font-size: 2rem;
+      height: 50px;
+      @include ButtonDesign($redColor, $redColor, transparent, $whiteColor);
+    }
+    .addtocart {
+      &:hover {
+        background-color: transparent;
+        border: 1px solid $goldenColor;
+        cursor: pointer;
+        color: $goldenColor;
+      }
+    }
+    .wishlist {
+      margin-left: 2rem;
+      @include ButtonDesign(
+        transparent,
+        transparent,
+        $goldenColor,
+        $goldenColor
+      );
+      &:hover {
+        background-color: $redColor;
+        border: 1px solid transparent;
+        cursor: pointer;
+        color: $whiteColor;
+      }
+    }
+  }
+}
