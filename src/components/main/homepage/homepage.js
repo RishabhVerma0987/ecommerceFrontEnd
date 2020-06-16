@@ -4,6 +4,7 @@ import { topGamesBanner } from "../../../store/actions";
 import Navbar from "../navbar/navbar";
 import "./homepage.scss";
 import Background from "../background/background";
+import { Link } from "react-router-dom";
 function Homepage() {
   const dispatch = useDispatch();
   const stateTopGames = useSelector((state) => state.bannerTopGamesReducer);
@@ -52,14 +53,16 @@ function Homepage() {
                     setScale([1, 0.8, 0.8]);
                   }}
                 >
-                  <div className="nameBox">
-                    <p>{game.game_name}</p>
-                  </div>
-                  <img
-                    src={require(`../../../assets/${game.image_name}.jpg`)}
-                    alt={game.image_name}
-                  ></img>
-                  <div className="contentBox"></div>
+                  <Link to={`/product/${game.id}`}>
+                    <div className="nameBox">
+                      <p>{game.game_name}</p>
+                    </div>
+                    <img
+                      src={require(`../../../assets/${game.image_name}.jpg`)}
+                      alt={game.image_name}
+                    ></img>
+                    <div className="contentBox"></div>
+                  </Link>
                 </div>
               );
             })}

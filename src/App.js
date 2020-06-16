@@ -5,18 +5,31 @@ import Latest from "./components/main/latest/latest";
 import Ps4XboxGames from "./components/main/ps4XboxGames/ps4XboxGames";
 import BrowseHome from "./components/browse/home/browseHome";
 import ProductPage from "./components/productPage/productPage";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //import Payment from "./components/paymentTesting/paymentTesting";
 import "./App.scss";
 function App() {
   return (
     <div className="App">
-      {/* <Homepage />
-      <Trending />
-      <Latest />
-      <Ps4XboxGames platform={"PS4"} />
-      <Ps4XboxGames platform={"XBOX"} /> */}
-      {/* <BrowseHome /> */}
-      <ProductPage />
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <Homepage />
+            <Trending />
+            <Latest />
+            <Ps4XboxGames platform={"PS4"} />
+            <Ps4XboxGames platform={"XBOX"} />
+          </Route>
+
+          <Route path="/browse/:category">
+            <BrowseHome />
+          </Route>
+
+          <Route path="/product/:id">
+            <ProductPage />
+          </Route>
+        </Switch>
+      </Router>
       {/* <Payment /> */}
     </div>
   );

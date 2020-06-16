@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./navbar.scss";
+import { Link } from "react-router-dom";
+
 function Navbar({ color }) {
   const [open, setOpen] = useState(false);
 
@@ -20,8 +22,12 @@ function Navbar({ color }) {
         <div className="nav-items">
           <div className="links">
             <ul>
-              <li>Home</li>
-              <li>Browse</li>
+              <Link to="/">
+                <li>Home</li>
+              </Link>
+              <Link to="/browse/all">
+                <li>Browse</li>
+              </Link>
               <li>About Us</li>
               <li>Contact Us</li>
             </ul>
@@ -67,8 +73,12 @@ function Navbar({ color }) {
             </li>
           </ul>
           <ul className={openNav()}>
-            <li>Home</li>
-            <li>Browse</li>
+            <Link to="/">
+              <li>Home</li>
+            </Link>
+            <Link to="/browse/all">
+              <li>Browse</li>
+            </Link>
             <li>About Us</li>
             <li>Contact Us</li>
             <li>Login</li>
