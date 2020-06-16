@@ -40,3 +40,50 @@
     }
   }
 }
+
+@media (max-width: 1047px) {
+  .video-showcase {
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    .main-video {
+      min-height: 300px;
+      width: 100%;
+      height: 70%;
+      position: relative;
+      //padding-top: 56.25%;
+      .react-player {
+        padding: 0rem 0rem 0rem 0rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+    .other-videos {
+      overflow-x: auto;
+      //min-height: 100px;
+      height: 30%;
+      min-width: 300px;
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      padding: 2rem 0rem 0rem 2rem;
+      .element {
+        min-width: 200px;
+        height: 100%;
+        padding-right: 1.5rem;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+      }
+      .last {
+        padding-right: 0rem;
+      }
+    }
+  }
+}

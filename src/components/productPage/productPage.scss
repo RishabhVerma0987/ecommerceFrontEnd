@@ -5,3 +5,21 @@
   height: 80vh;
   display: flex;
 }
+.mobile-imports {
+  display: none;
+}
+
+@media (max-width: 1047px) {
+  .productPage {
+    background-color: $darkColor;
+    min-height: 500px;
+    height: auto;
+    flex-direction: column;
+  }
+  .imports {
+    display: none;
+  }
+  .mobile-imports {
+    display: block;
+  }
+}

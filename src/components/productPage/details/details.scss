@@ -13,6 +13,7 @@
   width: 40%;
   //background-color: chocolate;
   height: 100%;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   padding: 2rem 4rem 2rem 2rem;
@@ -112,6 +113,123 @@
         border: 1px solid transparent;
         cursor: pointer;
         color: $whiteColor;
+      }
+    }
+  }
+}
+
+@media (max-width: 1047px) {
+  .details {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 4rem 2rem 2rem;
+    .title {
+      p {
+        width: fit-content;
+        font-size: 6rem;
+        border-bottom: 4px solid $redColor;
+      }
+    }
+    .rating {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      p {
+        font-size: 2rem;
+        color: $whiteColor;
+      }
+      .feedback {
+        font-size: 1.5rem;
+        margin-left: 1rem;
+        @include ButtonDesign(
+          $greenShade,
+          $greenShade,
+          transparent,
+          $goldenColor
+        );
+      }
+    }
+
+    .description {
+      margin-top: 2.5rem;
+      p {
+        font-size: 1.5rem;
+        word-spacing: 0.5rem;
+        color: $whiteColor;
+        font-family: $fontNew;
+      }
+    }
+    .price {
+      margin-top: 3rem;
+      margin-bottom: 7rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p {
+        font-size: 4rem;
+        font-family: $fontNew;
+      }
+      .off {
+        padding-left: 2rem;
+        .tag {
+          font-size: 2.5rem;
+          color: $redColor;
+          text-decoration-line: line-through;
+        }
+        .style {
+          font-size: 1.5rem;
+          font-family: $fontNew;
+          @include ButtonDesign(
+            $darkGreenColor,
+            $darkGreenColor,
+            transparent,
+            $goldenColor
+          );
+        }
+      }
+    }
+    .control {
+      position: fixed;
+      bottom: 0px;
+      right: 0px;
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      button {
+        border-radius: 0px !important;
+        flex: 1;
+        font-size: 2rem;
+        height: 50px;
+        @include ButtonDesign($redColor, $redColor, transparent, $whiteColor);
+      }
+      .addtocart {
+        &:hover {
+          background-color: $darkColor;
+          border: 1px solid $goldenColor;
+          cursor: pointer;
+          color: $goldenColor;
+        }
+      }
+      .wishlist {
+        margin-left: 0rem;
+        border-left: none !important;
+        @include ButtonDesign(
+          $darkGreenColor,
+          $darkColor,
+          $darkGreenColor,
+          $goldenColor
+        );
+        &:hover {
+          background-color: $darkGreenColor;
+          border: 1px solid transparent;
+          cursor: pointer;
+          color: $goldenColor;
+        }
       }
     }
   }

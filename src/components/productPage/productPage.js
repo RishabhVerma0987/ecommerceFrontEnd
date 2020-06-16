@@ -7,8 +7,14 @@ import Details from "./details/details";
 function ProductPage() {
   return (
     <React.Fragment>
-      <Navbar />
-      <Background image={"lounew"} bgColor={"#1F2227"} />
+      <div className="imports">
+        <Navbar />
+        <Background image={"lounew"} bgColor={"#1F2227"} />
+      </div>
+      <div className="mobile-imports">
+        <Navbar color={"#1F2227"} />
+      </div>
+
       <div className="productPage">
         <VideoShowCase />
         <Details />
