@@ -5,9 +5,12 @@ import Latest from "./components/main/latest/latest";
 import Ps4XboxGames from "./components/main/ps4xboxgames/ps4xboxgames";
 import BrowseHome from "./components/browse/home/browsehome";
 import ProductPage from "./components/productpage/productpage";
+import Login from "./components/auth/login";
+import Register from "./components/auth/register";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //import Payment from "./components/paymentTesting/paymentTesting";
 import "./App.scss";
+import { round } from "lodash";
 function App() {
   return (
     <div className="App">
@@ -27,6 +30,12 @@ function App() {
 
           <Route path="/product/:id">
             <ProductPage />
+          </Route>
+          <Route path="/auth/login">
+            <Login />
+          </Route>
+          <Route path="/auth/register">
+            <Register />
           </Route>
         </Switch>
       </Router>

@@ -34,7 +34,10 @@ function Navbar({ color }) {
           </div>
           <div className="right-links">
             <ul>
-              <li>Login</li>
+              <Link to="/auth/login">
+                <li>Login</li>
+              </Link>
+
               <li className="cart">
                 <img src={require("../../../assets/cart.svg")} alt="cart"></img>
               </li>
@@ -81,7 +84,9 @@ function Navbar({ color }) {
             </Link>
             <li>About Us</li>
             <li>Contact Us</li>
-            <li>Login</li>
+            <Link to="/auth/login">
+              <li>Login</li>
+            </Link>
           </ul>
         </div>
       </div>
