@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import "./mainBox.scss";
+import "./mainbox.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { trendingGames } from "../../../../store/actions";
-import CartSVG from "../../resuables/cartSVG";
-import WishListSVG from "../../resuables/wishlistSVG";
+import CartSVG from "../../resuables/cartsvg";
+import WishListSVG from "../../resuables/wishlistsvg";
 
 function MainBox() {
   const dispatch = useDispatch();

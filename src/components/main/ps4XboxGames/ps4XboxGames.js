@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../resuables/card";
-import "./ps4XboxGames.scss";
+import "./ps4xboxgames.scss";
 import { ps4Games, xboxGames } from "../../../store/actions/index";
 
 function Ps4XboxGames({ platform }) {

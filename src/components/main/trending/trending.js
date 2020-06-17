@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./trending.scss";
-import MainBox from "./resusableCompo/mainBox";
-import { motion, AnimatePresence } from "framer-motion";
+import MainBox from "./resusableCompo/mainbox";
+// import { motion, AnimatePresence } from "framer-motion";
 function Trending() {
   const [position, setPosition] = useState(["0px", "0px"]);
   const [display, setDisplay] = useState(false);

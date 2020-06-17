@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./browseHome.scss";
+import "./browsehome.scss";
 import Navbar from "../../main/navbar/navbar";
 import AnimateHeight from "react-animate-height";
 import { useDispatch, useSelector } from "react-redux";

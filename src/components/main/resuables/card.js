@@ -1,6 +1,6 @@
 import React from "react";
-import CartSVG from "./cartSVG";
-import WishListSVG from "./wishlistSVG";
+import CartSVG from "./cartsvg";
+import WishListSVG from "./wishlistsvg";
 import "./card.scss";
 function Card({ gameName, imageName, price, rating, key }) {
   return (

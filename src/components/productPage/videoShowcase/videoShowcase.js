@@ -1,6 +1,6 @@
 import React from "react";
 import ReactPlayer from "react-player/youtube";
-import "./videoShowcase.scss";
+import "./videoshowcase.scss";
 function VideoShowCase() {
   return (
     <div className="video-showcase">

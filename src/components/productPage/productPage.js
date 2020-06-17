@@ -1,8 +1,8 @@
 import React from "react";
-import "./productPage.scss";
+import "./productpage.scss";
 import Navbar from "../main/navbar/navbar";
 import Background from "../main/background/background";
-import VideoShowCase from "./videoShowcase/videoShowcase";
+import VideoShowCase from "./videoshowcase/videoshowcase";
 import Details from "./details/details";
 function ProductPage() {
   return (
