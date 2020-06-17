@@ -7,7 +7,8 @@ import BrowseHome from "./components/browse/home/browsehome";
 import ProductPage from "./components/productpage/productpage";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Cart from "./components/cart/cart";
 //import Payment from "./components/paymentTesting/paymentTesting";
 import "./App.scss";
 import { round } from "lodash";
@@ -17,11 +18,12 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact>
-            <Homepage />
+            {/* <Homepage />
             <Trending />
             <Latest />
             <Ps4XboxGames platform={"PS4"} />
-            <Ps4XboxGames platform={"XBOX"} />
+            <Ps4XboxGames platform={"XBOX"} /> */}
+            <Cart />
           </Route>
 
           <Route path="/browse/:category">
