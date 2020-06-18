@@ -18,12 +18,11 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact>
-            {/* <Homepage />
+            <Homepage />
             <Trending />
             <Latest />
             <Ps4XboxGames platform={"PS4"} />
-            <Ps4XboxGames platform={"XBOX"} /> */}
-            <Cart />
+            <Ps4XboxGames platform={"XBOX"} />
           </Route>
 
           <Route path="/browse/:category">
@@ -38,6 +37,9 @@ function App() {
           </Route>
           <Route path="/auth/register">
             <Register />
+          </Route>
+          <Route path="/cart">
+            <Cart />
           </Route>
         </Switch>
       </Router>

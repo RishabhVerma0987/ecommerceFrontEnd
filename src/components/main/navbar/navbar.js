@@ -38,9 +38,14 @@ function Navbar({ color }) {
                 <li>Login</li>
               </Link>
 
-              <li className="cart">
-                <img src={require("../../../assets/cart.svg")} alt="cart"></img>
-              </li>
+              <Link to="/cart">
+                <li className="cart">
+                  <img
+                    src={require("../../../assets/cart.svg")}
+                    alt="cart"
+                  ></img>
+                </li>
+              </Link>
               <li className="wishlist">
                 <img
                   src={require("../../../assets/wishlist.svg")}
@@ -57,9 +62,11 @@ function Navbar({ color }) {
         </div>
         <div className="nav-items">
           <ul>
-            <li>
-              <img src={require("../../../assets/cart.svg")} alt="cart"></img>
-            </li>
+            <Link to="/cart">
+              <li className="cart">
+                <img src={require("../../../assets/cart.svg")} alt="cart"></img>
+              </li>
+            </Link>
             <li>
               <img
                 src={require("../../../assets/wishlist.svg")}
