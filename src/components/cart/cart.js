@@ -36,7 +36,30 @@ function Cart() {
               <div className="right">$ 35.00 /-</div>
             </div>
           </div>
-          <div className="billing"></div>
+          <div className="billing">
+            <h3>PRICE DETAILS</h3>
+            <div className="price-item">
+              <p>Price , 2 items</p>
+              <p className="money">$104</p>
+            </div>
+            <div className="discount">
+              <p>Discount</p>
+              <p className="money">
+                $52 / <span>50% OFF</span>
+              </p>
+            </div>
+            <div className="total-amount">
+              <p>Total Amount</p>
+              <p className="money">$52</p>
+            </div>
+            <div className="pay-button">
+              <button className="without">PAY</button>
+              <button className="with-amount">
+                PAY
+                <span style={{ marginLeft: "1rem" }}>$52</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </React.Fragment>
