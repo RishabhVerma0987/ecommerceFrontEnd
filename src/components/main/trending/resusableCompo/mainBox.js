@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { trendingGames } from "../../../../store/actions";
 import CartSVG from "../../resuables/cartsvg";
 import WishListSVG from "../../resuables/wishlistsvg";
+import { Link } from "react-router-dom";
 
 function MainBox() {
   const dispatch = useDispatch();
@@ -22,15 +23,19 @@ function MainBox() {
           ? stateTrendingGames.map((i) => {
               return (
                 <div className="card" key={i.id}>
-                  <div className="image">
-                    <img
-                      src={require(`../../../../assets/${i.image_name}.jpg`)}
-                      alt="cyberpunk"
-                    ></img>
-                  </div>
-                  <div className="info">
-                    <h5>{i.title}</h5>
+                  <Link to={`/product/${i.id}`}>
+                    <div className="image">
+                      <img
+                        src={require(`../../../../assets/${i.image_name}.jpg`)}
+                        alt="cyberpunk"
+                      ></img>
+                    </div>
+                  </Link>
 
+                  <div className="info">
+                    <Link to={`/product/${i.id}`}>
+                      <h5>{i.title}</h5>
+                    </Link>
                     <p>{i.description}</p>
                     <div className="pricing">
                       <div className="order-rating">

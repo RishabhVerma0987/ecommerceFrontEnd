@@ -22,6 +22,7 @@
       justify-content: space-between;
       .card {
         //min-width: 190px;
+        border-radius: 5px;
         margin-left: 3rem;
         margin-right: 3rem;
         width: 18%;
@@ -36,6 +37,7 @@
           width: 100%;
           height: 100%;
           object-fit: cover;
+          border-radius: 5px;
         }
         h2 {
           position: absolute;
@@ -45,7 +47,7 @@
           font-family: $fontNew;
           background-color: black;
           padding: 0rem 2rem 0rem 2rem;
-          border-radius: 5px;
+
           backdrop-filter: blur(15px);
         }
       }

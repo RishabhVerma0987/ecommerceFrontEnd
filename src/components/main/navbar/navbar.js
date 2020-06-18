@@ -16,9 +16,11 @@ function Navbar({ color }) {
   return (
     <React.Fragment>
       <div className="navbar" style={{ backgroundColor: color }}>
-        <div className="logo">
-          <img src={require("../../../assets/logo.svg")} alt="LOGO"></img>
-        </div>
+        <Link to="/">
+          <div className="logo">
+            <img src={require("../../../assets/logo.svg")} alt="LOGO"></img>
+          </div>
+        </Link>
         <div className="nav-items">
           <div className="links">
             <ul>
@@ -57,9 +59,11 @@ function Navbar({ color }) {
         </div>
       </div>
       <div className="navbar-mobile" style={{ backgroundColor: color }}>
-        <div className="logo">
-          <img src={require("../../../assets/logo.svg")} alt="LOGO"></img>
-        </div>
+        <Link to="/">
+          <div className="logo">
+            <img src={require("../../../assets/logo.svg")} alt="LOGO"></img>
+          </div>
+        </Link>
         <div className="nav-items">
           <ul>
             <Link to="/cart">
