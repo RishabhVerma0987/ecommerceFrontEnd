@@ -1,6 +1,48 @@
+@import "../../../global/global";
 .wishlistCompo {
-  margin: 0 auto;
-  width: 80%;
+  //margin: 0 auto;
+  width: 100%;
   min-height: 400px;
-  background-color: red;
+  .workingArea {
+    width: 100%;
+    background-color: $darkColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .container {
+      width: 90%;
+      min-height: 700px;
+      .content {
+        margin-top: 2rem;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 4rem;
+        row-gap: 4rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1162px) {
+  .wishlistCompo {
+    .workingArea {
+      .container {
+        .content {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
+  }
+}
+@media (max-width: 650px) {
+  .wishlistCompo {
+    .workingArea {
+      .container {
+        .content {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+    }
+  }
 }
