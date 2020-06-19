@@ -3,11 +3,12 @@ import Navbar from "../main/navbar/navbar";
 import "./usepage.scss";
 import Profile from "./profile/profile";
 import MyGame from "./mygames/mygame";
+import Wishlist from "./wishlist/wishlist";
 function UserPage() {
   const [nav, setNav] = useState([
     { name: <Profile />, value: true },
     { name: <MyGame />, value: false },
-    { name: "Wishlist", value: false },
+    { name: <Wishlist />, value: false },
   ]);
 
   const changeCompo = (key) => {
