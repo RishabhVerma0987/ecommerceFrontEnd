@@ -15,15 +15,14 @@ import "./App.scss";
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router forceRefresh={true}>
         <Switch>
           <Route path="/" exact>
-            {/* <Homepage />
+            <Homepage />
             <Trending />
             <Latest />
             <Ps4XboxGames platform={"PS4"} />
-            <Ps4XboxGames platform={"XBOX"} /> */}
-            <UserPage />
+            <Ps4XboxGames platform={"XBOX"} />
           </Route>
 
           <Route path="/browse/:category">
@@ -42,6 +41,7 @@ function App() {
           <Route path="/cart">
             <Cart />
           </Route>
+          <Route path="/user/:header" component={UserPage}></Route>
         </Switch>
       </Router>
       {/* <Payment /> */}
