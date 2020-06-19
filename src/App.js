@@ -9,20 +9,21 @@ import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cart from "./components/cart/cart";
+import UserPage from "./components/user/userpage";
 //import Payment from "./components/paymentTesting/paymentTesting";
 import "./App.scss";
-import { round } from "lodash";
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route path="/" exact>
-            <Homepage />
+            {/* <Homepage />
             <Trending />
             <Latest />
             <Ps4XboxGames platform={"PS4"} />
-            <Ps4XboxGames platform={"XBOX"} />
+            <Ps4XboxGames platform={"XBOX"} /> */}
+            <UserPage />
           </Route>
 
           <Route path="/browse/:category">

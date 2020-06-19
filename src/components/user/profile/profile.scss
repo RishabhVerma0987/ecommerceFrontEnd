@@ -1,0 +1,120 @@
+@import "../../../global/global";
+.profile {
+  margin: 0 auto;
+  border-radius: 5px;
+  width: 400px;
+  min-width: 350px;
+  min-height: 400px;
+
+  .content {
+    margin-top: 1rem;
+
+    padding: 2rem;
+    border-radius: 5px;
+
+    .emailBox,
+    .passwordBox {
+      width: 100%;
+      margin-top: 1rem;
+      .label {
+        font-size: 1.5rem;
+        font-family: $fontNew;
+        color: $whiteColor;
+        text-align: start;
+      }
+      input {
+        margin-top: 0.5rem;
+        width: 100%;
+        height: 50px;
+        background-color: transparent;
+        border: 0.5px solid $goldenColor;
+        padding: 1rem;
+
+        border-radius: 5px;
+        color: $goldenColor;
+        font-size: 2rem;
+      }
+    }
+
+    .emailBox {
+      .email {
+        p {
+          font-family: $fontNew;
+        }
+        .label {
+          font-size: 1.5rem;
+          color: $whiteColor;
+        }
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: flex-end;
+        .edit {
+          font-size: 1rem;
+          color: $goldenColor;
+          font-style: italic;
+        }
+      }
+    }
+
+    .passwordBox {
+      margin-top: 4rem;
+      .password {
+        p {
+          font-family: $fontNew;
+        }
+        .pass {
+          font-size: 1.5rem;
+          color: $whiteColor;
+        }
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: flex-end;
+        .lost {
+          font-size: 1rem;
+          color: $goldenColor;
+          font-style: italic;
+        }
+      }
+    }
+    .submit {
+      margin-top: 3rem;
+
+      button {
+        font-size: 1.5rem;
+        padding: 0.7rem 2rem 0.7em 2rem;
+        border-radius: 5px;
+        border: none;
+        background-color: $redColor;
+        color: $whiteColor;
+        width: 100%;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    .create {
+      margin-top: 3rem;
+      text-align: center;
+      p {
+        font-size: 1.2rem;
+        color: $whiteColor;
+        font-family: $fontNew;
+        span {
+          font-size: 1.2rem;
+        }
+      }
+      .back {
+        padding-top: 1rem;
+        color: $goldenColor;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .profile {
+    width: 350px;
+  }
+}
