@@ -2,15 +2,20 @@ import React, { useState } from "react";
 import Navbar from "../main/navbar/navbar";
 import "./usepage.scss";
 import Profile from "./profile/profile";
+import MyGame from "./mygames/mygame";
 function UserPage() {
-  const [nav, setNav] = useState([true, false, false]);
+  const [nav, setNav] = useState([
+    { name: <Profile />, value: true },
+    { name: <MyGame />, value: false },
+    { name: "Wishlist", value: false },
+  ]);
 
   const changeCompo = (key) => {
     let temp = nav;
     for (let i = 0; i < temp.length; i++) {
-      temp[i] = false;
+      temp[i].value = false;
     }
-    temp[key] = true;
+    temp[key].value = true;
     setNav([...temp]);
   };
 
@@ -24,8 +29,8 @@ function UserPage() {
             <li
               onClick={() => changeCompo(0)}
               style={{
-                color: nav[0] ? "white" : "",
-                borderBottom: nav[0]
+                color: nav[0].value ? "white" : "",
+                borderBottom: nav[0].value
                   ? "1px solid red"
                   : "1px solid transparent",
               }}
@@ -35,8 +40,8 @@ function UserPage() {
             <li
               onClick={() => changeCompo(1)}
               style={{
-                color: nav[1] ? "white" : "",
-                borderBottom: nav[1]
+                color: nav[1].value ? "white" : "",
+                borderBottom: nav[1].value
                   ? "1px solid red"
                   : "1px solid transparent",
               }}
@@ -46,8 +51,8 @@ function UserPage() {
             <li
               onClick={() => changeCompo(2)}
               style={{
-                color: nav[2] ? "white" : "",
-                borderBottom: nav[2]
+                color: nav[2].value ? "white" : "",
+                borderBottom: nav[2].value
                   ? "1px solid red"
                   : "1px solid transparent",
               }}
@@ -57,7 +62,13 @@ function UserPage() {
           </ul>
         </div>
         <div className="userContainer">
-          <Profile />
+          {nav.map((i) => {
+            if (i.value === true) {
+              return i.name;
+            } else {
+              return null;
+            }
+          })}
         </div>
       </div>
     </React.Fragment>
