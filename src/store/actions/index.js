@@ -1,8 +1,8 @@
 //import bannerTopGamesData from "../../_data/bannerTopGames.json";
 import trendingGamesData from "../../_data/trendingGames.json";
 import latestGamesData from "../../_data/latest.json";
-import ps4GamesData from "../../_data/ps4Data.json";
-import xboxGamesData from "../../_data/xboxData.json";
+//import ps4GamesData from "../../_data/ps4Data.json";
+//import xboxGamesData from "../../_data/xboxData.json";
 import axios from "axios";
 
 const url = "https://rishabhvermaeccom.azurewebsites.net/api/v1";
@@ -41,10 +41,29 @@ export const trendingGames = () => {
   };
 };
 
-export const latestGames = () => {
+/**
+ * @param description : fetch latest game , sort by created at , length = 4
+ * @param url : url/product/?sort=createdAt
+ * @param dispatch : latestGames()
+ */
+
+export const fetchLatestGamesBanner = () => {
+  return function (dispatch) {
+    return axios
+      .get(`${url}/product/?sort=createdAt&limit=4&select=title,photo`)
+      .then((res) => {
+        dispatch(latestGames(res.data.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+// * called by fetchLatestGamesBanner()
+export const latestGames = (data) => {
   return {
     type: "LATEST_GAMES",
-    payload: latestGamesData,
+    payload: data,
   };
 };
 

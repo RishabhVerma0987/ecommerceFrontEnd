@@ -5,12 +5,9 @@ function Latest_Mobile({ data }) {
     <div className="card-list-mobile">
       {data?.map((game) => {
         return (
-          <div className="card" key={game.id}>
-            <h2>{game.name}</h2>
-            <img
-              src={require(`../../../assets/${game.name}.jpg`)}
-              alt={game.name}
-            ></img>
+          <div className="card" key={game._id}>
+            <h2>{game.title}</h2>
+            <img src={game.photo} alt={game.title}></img>
           </div>
         );
       })}

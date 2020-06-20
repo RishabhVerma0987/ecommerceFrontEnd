@@ -3,13 +3,13 @@ import "./latest.scss";
 import Background from "../background/background";
 import LatestMobile from "./latest-mobile";
 import { useDispatch, useSelector } from "react-redux";
-import { latestGames } from "../../../store/actions";
+import { fetchLatestGamesBanner } from "../../../store/actions";
 function Latest() {
   const dispatch = useDispatch();
   const latestGamesReducer = useSelector((state) => state.latestGamesReducer);
 
   useEffect(() => {
-    dispatch(latestGames());
+    dispatch(fetchLatestGamesBanner());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -22,13 +22,10 @@ function Latest() {
           <div className="card-list">
             {latestGamesReducer?.map((game) => {
               return (
-                <div className="card" key={game.id}>
-                  <h2>{game.name}</h2>
+                <div className="card" key={game._id}>
+                  <h2>{game.title.replace(/ /g, "")}</h2>
 
-                  <img
-                    src={require(`../../../assets/${game.name}.jpg`)}
-                    alt={game.name}
-                  ></img>
+                  <img src={game.photo} alt={game.title}></img>
                 </div>
               );
             })}
