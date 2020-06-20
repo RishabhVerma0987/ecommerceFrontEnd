@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { topGamesBanner } from "../../../store/actions";
+import { fetchTopGamesBanner } from "../../../store/actions";
 import Navbar from "../navbar/navbar";
 import "./homepage.scss";
 import Background from "../background/background";
@@ -10,7 +10,7 @@ function Homepage() {
   const stateTopGames = useSelector((state) => state.bannerTopGamesReducer);
   const [scale, setScale] = useState([1, 0.8, 0.8]);
   useEffect(() => {
-    dispatch(topGamesBanner());
+    dispatch(fetchTopGamesBanner());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -24,6 +24,9 @@ function Homepage() {
     }
     setScale([...temp]);
   };
+
+  console.log(stateTopGames);
+
   return (
     <React.Fragment>
       <Background image={"banner"} bgColor={"#1a4c31"} />
@@ -39,28 +42,26 @@ function Homepage() {
         </div>
         {stateTopGames ? (
           <div className="upcommingGames">
-            {stateTopGames.map((game) => {
+            {stateTopGames.map((game, index) => {
+              console.log(index);
               return (
                 <div
                   className="box"
-                  key={game.id}
+                  key={index}
                   style={{
-                    transform: `scale(${scale[game.id - 1]})`,
-                    opacity: scale[game.id - 1] === 1 ? 1 : 0.5,
+                    transform: `scale(${scale[index]})`,
+                    opacity: scale[index] === 1 ? 1 : 0.5,
                   }}
-                  onMouseEnter={() => changeScale(game.id - 1)}
+                  onMouseEnter={() => changeScale(index)}
                   onMouseLeave={() => {
                     setScale([1, 0.8, 0.8]);
                   }}
                 >
-                  <Link to={`/product/${game.id}`}>
+                  <Link to={`/product/${game._id}`}>
                     <div className="nameBox">
-                      <p>{game.game_name}</p>
+                      <p>{game.title.replace(/ /g, "")}</p>
                     </div>
-                    <img
-                      src={require(`../../../assets/${game.image_name}.jpg`)}
-                      alt={game.image_name}
-                    ></img>
+                    <img src={game.photo} alt={game.title}></img>
                     <div className="contentBox"></div>
                   </Link>
                 </div>
