@@ -1,4 +1,4 @@
-import bannerTopGamesData from "../../_data/bannerTopGames.json";
+//import bannerTopGamesData from "../../_data/bannerTopGames.json";
 import trendingGamesData from "../../_data/trendingGames.json";
 import latestGamesData from "../../_data/latest.json";
 import ps4GamesData from "../../_data/ps4Data.json";
@@ -14,7 +14,6 @@ const url = "https://rishabhvermaeccom.azurewebsites.net/api/v1";
  */
 
 export const fetchTopGamesBanner = () => {
-  console.log("run");
   return function (dispatch) {
     return axios
       .get(`${url}/product/?sort=-sold&select=title,photo&limit=3`)
@@ -49,16 +48,54 @@ export const latestGames = () => {
   };
 };
 
-export const ps4Games = () => {
+/**
+ * @param description : fetch  data based whose platform = PS4
+ * @param url : url/product/?platform=PS4&select=title,price,rating,photo
+ * @param dispatch : ps4Games()
+ */
+
+export const fetchPS4Games = () => {
+  return function (dispatch) {
+    return axios
+      .get(`${url}/product/?platform=PS4&select=title,price,rating,photo`)
+      .then((res) => {
+        dispatch(ps4Games(res.data.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+// * called by fetchPS4Games()
+export const ps4Games = (data) => {
   return {
     type: "PS4_GAMES",
-    payload: ps4GamesData,
+    payload: data,
   };
 };
 
-export const xboxGames = () => {
+/**
+ * @param description : fetch  data based whose platform = XBOX
+ * @param url : url/product/?platform=XBOX&select=title,price,rating,photo
+ * @param dispatch : xboxGames()
+ */
+
+export const fetchXBOXGames = () => {
+  return function (dispatch) {
+    return axios
+      .get(`${url}/product/?platform=XBOX&select=title,price,rating,photo`)
+      .then((res) => {
+        dispatch(xboxGames(res.data.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+// * called by fetchXBOXGames()
+export const xboxGames = (data) => {
   return {
     type: "XBOX_GAMES",
-    payload: xboxGamesData,
+    payload: data,
   };
 };

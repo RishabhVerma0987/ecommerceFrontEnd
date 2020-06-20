@@ -2,12 +2,12 @@ import React from "react";
 import CartSVG from "./cartsvg";
 import WishListSVG from "./wishlistsvg";
 import "./card.scss";
-function Card({ gameName, imageName, price, rating, key }) {
+function Card({ gameName, imageName, price, rating, key, got }) {
   return (
-    <div className="productCard">
+    <div className="productCard" key={key}>
       <div className="dp">
         <img
-          src={require(`../../../assets/${imageName}.jpg`)}
+          src={got ? imageName : require(`../../../assets/${imageName}.jpg`)}
           alt={imageName}
         />
       </div>
@@ -18,7 +18,10 @@ function Card({ gameName, imageName, price, rating, key }) {
           </div>
           <div className="priceRating">
             <div className="price">
-              <p>$ {price} /- </p>
+              <p>
+                $ {price === 0 ? "Free!" : price === -1 ? "Pre-Order" : price}{" "}
+                /-{" "}
+              </p>
             </div>
             <div className="rating">
               <p>{rating} S</p>

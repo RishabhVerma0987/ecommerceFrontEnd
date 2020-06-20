@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../resuables/card";
 import "./ps4xboxgames.scss";
-import { ps4Games, xboxGames } from "../../../store/actions/index";
+import { fetchPS4Games, fetchXBOXGames } from "../../../store/actions/index";
 
 function Ps4XboxGames({ platform }) {
   const dispatch = useDispatch();
@@ -10,9 +10,9 @@ function Ps4XboxGames({ platform }) {
   const xbox = useSelector((state) => state.xboxGamesReducer);
   useEffect(() => {
     if (platform === "PS4") {
-      dispatch(ps4Games());
+      dispatch(fetchPS4Games());
     } else {
-      dispatch(xboxGames());
+      dispatch(fetchXBOXGames());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -26,22 +26,24 @@ function Ps4XboxGames({ platform }) {
             ? games?.map((i) => {
                 return (
                   <Card
-                    gameName={i.game_name}
-                    imageName={i.image_name}
+                    gameName={i.title}
+                    imageName={i.photo}
                     price={i.price}
                     rating={i.rating}
-                    key={i.id}
+                    key={i._id}
+                    got={true}
                   />
                 );
               })
             : xbox?.map((i) => {
                 return (
                   <Card
-                    gameName={i.game_name}
-                    imageName={i.image_name}
+                    gameName={i.title}
+                    imageName={i.photo}
                     price={i.price}
                     rating={i.rating}
-                    key={i.id}
+                    key={i._id}
+                    got={true}
                   />
                 );
               })}
