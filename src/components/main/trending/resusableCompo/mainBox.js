@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./mainbox.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { trendingGames } from "../../../../store/actions";
+import { fetchTrendingGames } from "../../../../store/actions";
 import CartSVG from "../../resuables/cartsvg";
 import WishListSVG from "../../resuables/wishlistsvg";
 import { Link } from "react-router-dom";
@@ -11,7 +11,7 @@ function MainBox() {
   const stateTrendingGames = useSelector((state) => state.trendingGamesReducer);
 
   useEffect(() => {
-    dispatch(trendingGames());
+    dispatch(fetchTrendingGames());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -22,24 +22,21 @@ function MainBox() {
         {stateTrendingGames
           ? stateTrendingGames.map((i) => {
               return (
-                <div className="card" key={i.id}>
-                  <Link to={`/product/${i.id}`}>
+                <div className="card" key={i._id}>
+                  <Link to={`/product/${i._id}`}>
                     <div className="image">
-                      <img
-                        src={require(`../../../../assets/${i.image_name}.jpg`)}
-                        alt="cyberpunk"
-                      ></img>
+                      <img src={i.photo} alt="cyberpunk"></img>
                     </div>
                   </Link>
 
                   <div className="info">
-                    <Link to={`/product/${i.id}`}>
+                    <Link to={`/product/${i._id}`}>
                       <h5>{i.title}</h5>
                     </Link>
                     <p>{i.description}</p>
                     <div className="pricing">
                       <div className="order-rating">
-                        <button>Order now</button>
+                        <button>{i.price}</button>
                         <p>{i.rating}</p>
                       </div>
                       <div className="cart-wish">

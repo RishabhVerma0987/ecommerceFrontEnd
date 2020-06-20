@@ -1,6 +1,6 @@
 //import bannerTopGamesData from "../../_data/bannerTopGames.json";
-import trendingGamesData from "../../_data/trendingGames.json";
-import latestGamesData from "../../_data/latest.json";
+// import trendingGamesData from "../../_data/trendingGames.json";
+// import latestGamesData from "../../_data/latest.json";
 //import ps4GamesData from "../../_data/ps4Data.json";
 //import xboxGamesData from "../../_data/xboxData.json";
 import axios from "axios";
@@ -34,10 +34,35 @@ export const topGamesBanner = (data) => {
   };
 };
 
-export const trendingGames = () => {
+/**
+ * @param description : fetch trending game , sorted by sold in span of one week
+ * @param url : url/product?select=title,description,rating,sold,createdAt&sort=-sold&updatedAt[gt]=2020-06-06T15:17:54.320Z
+ * @param dispatch : trendingGames()
+ */
+
+export const fetchTrendingGames = () => {
+  return function (dispatch) {
+    var oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    return axios
+      .get(
+        `${url}/product?select=title,photo,description,price,rating,sold,createdAt&sort=-sold&updatedAt[gt]=${oneWeekAgo}&limit=4`
+      )
+      .then((res) => {
+        dispatch(trendingGames(res.data.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+// * called by fetchTrendingGames()
+export const trendingGames = (data) => {
   return {
     type: "TRENDING_GAMES",
-    payload: trendingGamesData,
+    payload: data,
   };
 };
 
