@@ -3,7 +3,7 @@ import "./browsehome.scss";
 import Navbar from "../../main/navbar/navbar";
 import AnimateHeight from "react-animate-height";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPS4Games } from "../../../store/actions/index";
+import { fetchAllGames } from "../../../store/actions/browse";
 import Card from "../../main/resuables/card";
 var array = require("lodash/array");
 function BrowseHome() {
@@ -75,14 +75,14 @@ function BrowseHome() {
   const [category, setCategory] = useState(categoryList);
 
   useEffect(() => {
-    dispatch(fetchPS4Games());
+    dispatch(fetchAllGames());
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [height, setHeight] = useState(0);
   const dispatch = useDispatch();
-  const games = useSelector((state) => state.ps4GamesReducer);
-
+  const games = useSelector((state) => state.fetchAllGamesReducer);
+  console.log(games);
   const [selectedCategory, setSelectedCategory] = useState([]);
 
   const toggle = () => {
@@ -278,6 +278,7 @@ function BrowseHome() {
                   rating={i.rating}
                   key={i._id}
                   got={true}
+                  platform={i.platform[0]}
                 />
               );
             })}

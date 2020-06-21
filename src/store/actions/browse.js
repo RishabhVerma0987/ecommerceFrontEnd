@@ -9,7 +9,7 @@ import { url } from "./index";
 export const fetchAllGames = () => {
   return function (dispatch) {
     return axios
-      .get(`${url}/product/?select=title,price,rating,photo&platform=PS4,XBOX`)
+      .get(`${url}/product`)
       .then((res) => {
         dispatch(allGames(res.data.data));
       })

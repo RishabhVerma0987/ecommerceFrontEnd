@@ -44,6 +44,7 @@ function Ps4XboxGames({ platform }) {
                     rating={i.rating}
                     key={i._id}
                     got={true}
+                    platform={i.platform[0]}
                   />
                 );
               })}

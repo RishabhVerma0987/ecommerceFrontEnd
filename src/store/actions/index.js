@@ -101,7 +101,9 @@ export const latestGames = (data) => {
 export const fetchPS4Games = () => {
   return function (dispatch) {
     return axios
-      .get(`${url}/product/?platform=PS4&select=title,price,rating,photo`)
+      .get(
+        `${url}/product/?platform=PS4&select=title,price,rating,photo,platform`
+      )
       .then((res) => {
         dispatch(ps4Games(res.data.data));
       })
@@ -127,7 +129,9 @@ export const ps4Games = (data) => {
 export const fetchXBOXGames = () => {
   return function (dispatch) {
     return axios
-      .get(`${url}/product/?platform=XBOX&select=title,price,rating,photo`)
+      .get(
+        `${url}/product/?platform=XBOX&select=title,price,rating,photo,platform`
+      )
       .then((res) => {
         dispatch(xboxGames(res.data.data));
       })
