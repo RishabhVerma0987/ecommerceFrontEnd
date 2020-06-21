@@ -3,7 +3,7 @@ import "./browsehome.scss";
 import Navbar from "../../main/navbar/navbar";
 import AnimateHeight from "react-animate-height";
 import { useDispatch, useSelector } from "react-redux";
-import { ps4Games } from "../../../store/actions/index";
+import { fetchPS4Games } from "../../../store/actions/index";
 import Card from "../../main/resuables/card";
 var array = require("lodash/array");
 function BrowseHome() {
@@ -20,18 +20,62 @@ function BrowseHome() {
     {
       title: "Genre",
       values: [
-        { id: 1, name: "RPG", checked: false },
-        { id: 2, name: "Racing", checked: false },
-        { id: 3, name: "Horror", checked: false },
+        { id: 1, name: "Action", checked: false },
+        { id: 2, name: "RPG", checked: false },
+        { id: 3, name: "FPS", checked: false },
+        { id: 4, name: "Horror", checked: false },
+        { id: 5, name: "Battle Royal", checked: false },
+        { id: 5, name: "Mystery", checked: false },
       ],
       id: 2,
+    },
+    {
+      title: "Price",
+      values: [
+        { id: 1, name: "Under 1000 Rs", checked: false },
+        { id: 2, name: "Under 2000 Rs", checked: false },
+        { id: 3, name: "Between 1000 - 2500 Rs", checked: false },
+        { id: 4, name: "Above 3000 Rs", checked: false },
+        { id: 5, name: "Under 4000 Rs", checked: false },
+      ],
+      id: 3,
+    },
+    {
+      title: "Pegi Rating",
+      values: [
+        { id: 1, name: "PEGI 18+", checked: false },
+        { id: 2, name: "PEGI 13+", checked: false },
+        { id: 3, name: "All Ages", checked: false },
+      ],
+      id: 4,
+    },
+    {
+      title: "Company",
+      values: [
+        { id: 1, name: "Activision", checked: false },
+        { id: 2, name: "Respawn", checked: false },
+        { id: 3, name: "Rockstar Games", checked: false },
+        { id: 4, name: "Ubitsoft", checked: false },
+        { id: 5, name: "Epic Games", checked: false },
+      ],
+      id: 5,
+    },
+    {
+      title: "User Rating",
+      values: [
+        { id: 1, name: "1-2⭐", checked: false },
+        { id: 2, name: "2-3⭐", checked: false },
+        { id: 3, name: "3-4⭐", checked: false },
+        { id: 4, name: "4-5⭐", checked: false },
+      ],
+      id: 6,
     },
   ];
 
   const [category, setCategory] = useState(categoryList);
 
   useEffect(() => {
-    dispatch(ps4Games());
+    dispatch(fetchPS4Games());
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -203,7 +247,21 @@ function BrowseHome() {
                   <li>
                     <div className="selected">
                       {i}
-                      <p onClick={() => clearCategory(i)}>%</p>
+                      <p
+                        onClick={() => clearCategory(i)}
+                        style={{
+                          backgroundColor: "#111113",
+                          borderRadius: "100%",
+                          width: "20px",
+                          height: "20px",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          paddingBottom: "5px",
+                        }}
+                      >
+                        x
+                      </p>
                     </div>
                   </li>
                 );
@@ -214,11 +272,12 @@ function BrowseHome() {
             {games?.map((i) => {
               return (
                 <Card
-                  gameName={i.game_name}
-                  imageName={i.image_name}
+                  gameName={i.title}
+                  imageName={i.photo}
                   price={i.price}
                   rating={i.rating}
-                  key={i.id}
+                  key={i._id}
+                  got={true}
                 />
               );
             })}

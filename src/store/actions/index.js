@@ -5,7 +5,7 @@
 //import xboxGamesData from "../../_data/xboxData.json";
 import axios from "axios";
 
-const url = "https://rishabhvermaeccom.azurewebsites.net/api/v1";
+export const url = "https://rishabhvermaeccom.azurewebsites.net/api/v1";
 
 /**
  * @param description : fetch 3 data based on the number of sold in decending order

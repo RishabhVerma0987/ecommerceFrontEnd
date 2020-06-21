@@ -9,6 +9,11 @@
   color: $whiteColor;
 }
 .productCard {
+  box-shadow: 0 0.8px 1.7px -7px rgba(0, 0, 0, 0.037),
+    0 2px 4px -7px rgba(0, 0, 0, 0.053), 0 3.8px 7.5px -7px rgba(0, 0, 0, 0.065),
+    0 6.7px 13.4px -7px rgba(0, 0, 0, 0.077),
+    0 12.5px 25.1px -7px rgba(0, 0, 0, 0.093),
+    0 30px 60px -7px rgba(0, 0, 0, 0.13);
   height: 300px;
   .dp {
     width: 100%;

@@ -93,9 +93,17 @@
   // }
 }
 
+@mixin BoxShadow {
+  box-shadow: 0 0.8px 1.7px -7px rgba(0, 0, 0, 0.037),
+    0 2px 4px -7px rgba(0, 0, 0, 0.053), 0 3.8px 7.5px -7px rgba(0, 0, 0, 0.065),
+    0 6.7px 13.4px -7px rgba(0, 0, 0, 0.077),
+    0 12.5px 25.1px -7px rgba(0, 0, 0, 0.093),
+    0 30px 60px -7px rgba(0, 0, 0, 0.13);
+}
+
 .browseHome {
   width: 100%;
-  min-height: 500px; //not fixed
+  min-height: 80vh; //not fixed
   background-color: #29282f;
   display: flex;
   .filter {
@@ -106,13 +114,18 @@
     .box {
       border-radius: 10px;
       background-color: #1f2227;
+      @include BoxShadow();
       width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
       padding: 0rem 2rem 2rem 2rem;
       .Platform,
-      .Genre {
+      .Genre,
+      .Price,
+      .Company,
+      .Pegi,
+      .User {
         margin-top: 2.5rem;
         display: flex;
         flex-direction: column;
@@ -126,12 +139,16 @@
         }
       }
 
-      .Platform {
+      .Platform,
+      .Price,
+      .Company {
         h5 {
           @include ButtonDesign($darkGreenColor, $darkGreenColor);
         }
       }
-      .Genre {
+      .Genre,
+      .Pegi,
+      .User {
         h5 {
           @include ButtonDesign($redColor, $redColor);
         }
@@ -157,7 +174,8 @@
         flex-wrap: wrap;
         li {
           font-size: 1.5rem;
-          background-color: $darkestColor;
+          background-color: #1f2227;
+          @include BoxShadow();
           padding: 1rem 2rem 1rem 2rem;
           margin-left: 2rem;
           border-radius: 30px;
@@ -262,7 +280,11 @@
           padding: 0rem 2rem 2rem 2rem;
           overflow: auto;
           .Platform,
-          .Genre {
+          .Genre,
+          .Price,
+          .Company,
+          .Pegi,
+          .User {
             margin-top: 2.5rem;
             display: flex;
             flex-direction: column;
@@ -278,12 +300,16 @@
             }
           }
 
-          .Platform {
+          .Platform,
+          .Price,
+          .Company {
             h5 {
               @include ButtonDesign($darkGreenColor, $darkGreenColor);
             }
           }
-          .Genre {
+          .Genre,
+          .Pegi,
+          .User {
             h5 {
               @include ButtonDesign($redColor, $redColor);
             }
