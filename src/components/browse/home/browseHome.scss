@@ -120,12 +120,12 @@
       display: flex;
       flex-direction: column;
       padding: 0rem 2rem 2rem 2rem;
-      .Platform,
-      .Genre,
-      .Price,
-      .Company,
-      .Pegi,
-      .User {
+      .platform,
+      .genre,
+      .price,
+      .company,
+      .pegi,
+      .rating {
         margin-top: 2.5rem;
         display: flex;
         flex-direction: column;
@@ -139,16 +139,16 @@
         }
       }
 
-      .Platform,
-      .Price,
-      .Company {
+      .platform,
+      .price,
+      .company {
         h5 {
           @include ButtonDesign($darkGreenColor, $darkGreenColor);
         }
       }
-      .Genre,
-      .Pegi,
-      .User {
+      .genre,
+      .pegi,
+      .rating {
         h5 {
           @include ButtonDesign($redColor, $redColor);
         }
@@ -279,12 +279,12 @@
           flex-direction: column;
           padding: 0rem 2rem 2rem 2rem;
           overflow: auto;
-          .Platform,
-          .Genre,
-          .Price,
-          .Company,
-          .Pegi,
-          .User {
+          .platform,
+          .genre,
+          .price,
+          .company,
+          .pegi,
+          .rating {
             margin-top: 2.5rem;
             display: flex;
             flex-direction: column;
@@ -300,16 +300,16 @@
             }
           }
 
-          .Platform,
-          .Price,
-          .Company {
+          .platform,
+          .price,
+          .company {
             h5 {
               @include ButtonDesign($darkGreenColor, $darkGreenColor);
             }
           }
-          .Genre,
-          .Pegi,
-          .User {
+          .genre,
+          .pegi,
+          .rating {
             h5 {
               @include ButtonDesign($redColor, $redColor);
             }

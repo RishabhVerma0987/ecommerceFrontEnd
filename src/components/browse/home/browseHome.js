@@ -9,7 +9,7 @@ var array = require("lodash/array");
 function BrowseHome() {
   const categoryList = [
     {
-      title: "Platform",
+      title: "platform",
       values: [
         { id: 1, name: "PS4", checked: false },
         { id: 2, name: "XBOX", checked: false },
@@ -18,7 +18,7 @@ function BrowseHome() {
       id: 1,
     },
     {
-      title: "Genre",
+      title: "genre",
       values: [
         { id: 1, name: "Action", checked: false },
         { id: 2, name: "RPG", checked: false },
@@ -30,7 +30,7 @@ function BrowseHome() {
       id: 2,
     },
     {
-      title: "Price",
+      title: "price",
       values: [
         { id: 1, name: "Under 1000 Rs", checked: false },
         { id: 2, name: "Under 2000 Rs", checked: false },
@@ -41,7 +41,7 @@ function BrowseHome() {
       id: 3,
     },
     {
-      title: "Pegi Rating",
+      title: "pegi rating",
       values: [
         { id: 1, name: "PEGI 18+", checked: false },
         { id: 2, name: "PEGI 13+", checked: false },
@@ -50,7 +50,7 @@ function BrowseHome() {
       id: 4,
     },
     {
-      title: "Company",
+      title: "company",
       values: [
         { id: 1, name: "Activision", checked: false },
         { id: 2, name: "Respawn", checked: false },
@@ -61,7 +61,7 @@ function BrowseHome() {
       id: 5,
     },
     {
-      title: "User Rating",
+      title: "rating",
       values: [
         { id: 1, name: "1-2⭐", checked: false },
         { id: 2, name: "2-3⭐", checked: false },
@@ -82,7 +82,7 @@ function BrowseHome() {
   const [height, setHeight] = useState(0);
   const dispatch = useDispatch();
   const games = useSelector((state) => state.fetchAllGamesReducer);
-  console.log(games);
+
   const [selectedCategory, setSelectedCategory] = useState([]);
 
   const toggle = () => {
@@ -157,6 +157,23 @@ function BrowseHome() {
       setSelectedCategory([...temp]);
     }
   };
+
+  useEffect(() => {
+    let temp = {};
+    for (let i = 0; i < category.length; i++) {
+      for (let j = 0; j < category[i].values.length; j++) {
+        if (selectedCategory.includes(category[i].values[j].name)) {
+          if (temp[category[i].title] === undefined) {
+            temp[category[i].title] = { $in: [category[i].values[j].name] };
+          } else {
+            temp[category[i].title]["$in"].push(category[i].values[j].name);
+          }
+        }
+      }
+    }
+
+    fetchAllGames()(dispatch, temp);
+  }, [selectedCategory]);
 
   return (
     <React.Fragment>

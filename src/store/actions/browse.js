@@ -1,29 +1,28 @@
 import axios from "axios";
 import { url } from "./index";
+
 /**
  * @param description : fetch all , filtered
  * @param url : url/product/?select=title,price,rating,photo (base)
  * @param dispatch : allGames()
  */
 
-/**
- *
- * @param query = {
- *
- *  platform:[PS4,XBOX,PX],
- *  genre:[RPG,...]
- *  price:[under 1000 , ...] //!needs further transformation to [{ sign:"lt" , value:1000 }]
- *  pegi:[pegi 18+ , pegi 13+] //!needs futher transform [{ sign:"gt" , value:18 }]
- *  comapany:[Ubisoft , ...]
- *  user rating:[1-2,2-3,...] //!just add [lt] 2 , [gt] 3
- * }
- */
+// platform: { $in: ["PS4", "XBOX"] },
+// company: { $in: ["Activision", "Respawn", "Ubisoft"] },
+// genre: { $in: ["RPG", "FPS"] },
+// $and: [{ price: { $gt: 3000 } }, { price: { $lt: 4000 } }],
+// pegi: { $in: ["13", "18"] },
+// $and: [{ rating: { $gte: 5 } }, { rating: { $lte: 5 } }],
 
-export const fetchAllGames = (query) => {
-  return function (dispatch) {
+export const fetchAllGames = () => {
+  return function (dispatch, query) {
+    console.log("tempinside", query);
     return axios
-      .get(`${url}/product`)
+      .post(`${url}/product/filter`, {
+        ...query,
+      })
       .then((res) => {
+        console.log(res.data);
         dispatch(allGames(res.data.data));
       })
       .catch(function (error) {
@@ -31,6 +30,7 @@ export const fetchAllGames = (query) => {
       });
   };
 };
+
 // * called by fetchAllGames()
 export const allGames = (data) => {
   return {
