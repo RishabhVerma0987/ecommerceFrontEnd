@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./register.scss";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../store/actions/auth";
 function Register() {
+  const dispatch = useDispatch();
+
   return (
     <div className="auth">
       <div className="register">
@@ -23,7 +27,13 @@ function Register() {
             <input type="password" />
           </div>
           <div className="submit">
-            <button>Submit</button>
+            <button
+              onClick={() =>
+                dispatch(registerUser("verma", "rup@gmail.com", "alpha098"))
+              }
+            >
+              Submit
+            </button>
           </div>
           <div className="create">
             <p>

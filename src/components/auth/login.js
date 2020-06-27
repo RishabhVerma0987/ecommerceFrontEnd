@@ -1,7 +1,10 @@
 import React from "react";
 import "./login.scss";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../store/actions/auth";
 function Auth() {
+  const dispatch = useDispatch();
   return (
     <div className="auth">
       <div className="login">
@@ -21,7 +24,11 @@ function Auth() {
             <input type="password" />
           </div>
           <div className="submit">
-            <button>Submit</button>
+            <button
+              onClick={() => dispatch(loginUser("run@gmail.com", "alpha098"))}
+            >
+              Submit
+            </button>
           </div>
           <div className="create">
             <p>
