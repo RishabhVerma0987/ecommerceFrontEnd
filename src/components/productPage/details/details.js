@@ -6,6 +6,14 @@ function Details({ game }) {
   const price = (price, offer) => {
     let priceInt = parseInt(price);
     let offerInt = parseInt(offer);
+
+    if (priceInt === 0) {
+      return 0;
+    }
+    if (priceInt === -1) {
+      return "Pre Order";
+    }
+
     return (priceInt * offerInt) / 100;
   };
 
