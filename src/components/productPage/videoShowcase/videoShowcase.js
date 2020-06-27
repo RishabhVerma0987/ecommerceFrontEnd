@@ -1,32 +1,46 @@
 import React from "react";
 import ReactPlayer from "react-player/youtube";
 import "./videoshowcase.scss";
-function VideoShowCase() {
+import { SRLWrapper } from "simple-react-lightbox";
+
+function VideoShowCase({ game }) {
+  const options = {
+    caption: {
+      showCaption: false,
+    },
+  };
+
   return (
     <div className="video-showcase">
       <div className="main-video">
         <ReactPlayer
           className="react-player"
-          url="https://www.youtube.com/watch?v=qPNiIeKMHyg"
+          url={game?.video[1]}
           width="100%"
           height="100%"
           controls={true}
+          playing={true}
           playIcon={
-            <img src={require("../../../assets/logo.svg")} alt="play"></img>
+            <img
+              src={require("../../../assets/play.svg")}
+              style={{ width: "50px", height: "50px" }}
+              alt="play"
+            ></img>
           }
-          light={require("../../../assets/lounew.jpg")}
+          light={game?.videoImage[1]}
         />
       </div>
+
       <div className="other-videos">
-        <div className="element">
-          <img src={require("../../../assets/lounew.jpg")} alt="play"></img>
-        </div>
-        <div className="element">
-          <img src={require("../../../assets/lou.jpg")} alt="play"></img>
-        </div>
-        <div className="element last">
-          <img src={require("../../../assets/lastofus.jpg")} alt="play"></img>
-        </div>
+        <SRLWrapper options={options}>
+          {game?.videoImage.map((el, index) => {
+            return (
+              <div className="element">
+                <img src={el} alt="play"></img>
+              </div>
+            );
+          })}
+        </SRLWrapper>
       </div>
     </div>
   );

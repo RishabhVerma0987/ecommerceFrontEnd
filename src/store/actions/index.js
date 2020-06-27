@@ -147,3 +147,29 @@ export const xboxGames = (data) => {
     payload: data,
   };
 };
+
+/**
+ * @param description : fetch  a single product
+ * @param url : url/product/:id
+ * @param dispatch : singleGame()
+ */
+
+export const fetchSingleProduct = (id) => {
+  return function (dispatch) {
+    return axios
+      .get(`${url}/product/${id}`)
+      .then((res) => {
+        dispatch(singleGame(res.data.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+// * called by fetchXBOXGames()
+export const singleGame = (data) => {
+  return {
+    type: "SINGLE_GAME",
+    payload: data,
+  };
+};

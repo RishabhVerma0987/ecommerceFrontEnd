@@ -1,29 +1,33 @@
 import React from "react";
 import "./details.scss";
-function Details() {
+function Details({ game }) {
+  console.log(game);
+
+  const price = (price, offer) => {
+    let priceInt = parseInt(price);
+    let offerInt = parseInt(offer);
+    return (priceInt * offerInt) / 100;
+  };
+
   return (
     <div className="details">
       <div className="title">
-        <p>Last of Us 2</p>
+        <p>{game?.title}</p>
       </div>
       <div className="rating">
         <p>
-          4.5 <span>⭐</span>
+          {game?.rating} <span>⭐</span>
         </p>
-        <div className="feedback">positive</div>
+        <div className="feedback">{game?.company}</div>
       </div>
       <div className="description">
-        <p>
-          The Last of Us Part II takes place five years after the events of the
-          first game and about 25 years after the outbreak of the Cordyceps
-          Brain .
-        </p>
+        <p>{game?.description}</p>
       </div>
       <div className="price">
-        <p>$ 25.00 /- </p>
+        <p>$ {price(game?.price, game?.offer)} /- </p>
         <div className="off">
-          <p className="tag">$ 50.00</p>
-          <p className="style">50% OFF</p>
+          <p className="tag">$ {game?.price}</p>
+          <p className="style">{game?.offer}% OFF</p>
         </div>
       </div>
       <div className="control">

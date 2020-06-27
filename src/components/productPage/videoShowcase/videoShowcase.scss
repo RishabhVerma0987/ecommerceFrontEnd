@@ -20,23 +20,26 @@
     min-height: 100px;
     width: 100%;
     height: 30%;
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    padding: 2rem 6rem 2rem 4rem;
-    .element {
-      flex: 1;
+    padding: 2rem 4rem 2rem 4rem;
+    div {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
       height: 100%;
-      padding-right: 2rem;
-      img {
-        width: 100%;
+      .element {
+        flex: 1;
         height: 100%;
-        object-fit: cover;
-        border-radius: 5px;
+        padding-right: 2rem;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 5px;
+        }
       }
-    }
-    .last {
-      padding-right: 0rem;
+      .last {
+        padding-right: 0rem;
+      }
     }
   }
 }
@@ -66,23 +69,25 @@
       //min-height: 100px;
       height: 30%;
       min-width: 300px;
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
       padding: 2rem 0rem 0rem 2rem;
-      .element {
-        min-width: 200px;
-        height: 100%;
-        padding-right: 1.5rem;
-        img {
-          width: 100%;
+      div {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        .element {
+          min-width: 200px;
           height: 100%;
-          object-fit: cover;
-          border-radius: 5px;
+          padding-right: 1.5rem;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+          }
         }
-      }
-      .last {
-        padding-right: 0rem;
+        .last {
+          padding-right: 0rem;
+        }
       }
     }
   }

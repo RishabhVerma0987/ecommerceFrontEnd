@@ -14,15 +14,13 @@ import { url } from "./index";
 // pegi: { $in: ["13", "18"] },
 // $and: [{ rating: { $gte: 5 } }, { rating: { $lte: 5 } }],
 
-export const fetchAllGames = () => {
-  return function (dispatch, query) {
-    console.log("tempinside", query);
+export const fetchAllGames = (query) => {
+  return function (dispatch) {
     return axios
       .post(`${url}/product/filter`, {
         ...query,
       })
       .then((res) => {
-        console.log(res.data);
         dispatch(allGames(res.data.data));
       })
       .catch(function (error) {

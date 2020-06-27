@@ -29,9 +29,7 @@ function App() {
             <BrowseHome />
           </Route>
 
-          <Route path="/product/:id">
-            <ProductPage />
-          </Route>
+          <Route path="/product/:id" component={ProductPage}></Route>
           <Route path="/auth/login">
             <Login />
           </Route>

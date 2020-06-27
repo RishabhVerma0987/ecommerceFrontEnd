@@ -172,7 +172,7 @@ function BrowseHome() {
       }
     }
 
-    fetchAllGames()(dispatch, temp);
+    dispatch(fetchAllGames(temp));
   }, [selectedCategory]);
 
   return (
