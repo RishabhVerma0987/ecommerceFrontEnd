@@ -1,8 +1,11 @@
 import React from "react";
 import "./details.scss";
+import { useDispatch } from "react-redux";
+import { createCart } from "../../../store/actions/cart";
+import { useHistory } from "react-router-dom";
 function Details({ game }) {
-  console.log(game);
-
+  const dispatch = useDispatch();
+  let history = useHistory();
   const price = (price, offer) => {
     let priceInt = parseInt(price);
     let offerInt = parseInt(offer);
@@ -15,6 +18,12 @@ function Details({ game }) {
     }
 
     return (priceInt * offerInt) / 100;
+  };
+
+  const final = () => {
+    dispatch(createCart(game._id, null)).then(() => {
+      history.push("/cart");
+    });
   };
 
   return (
@@ -39,7 +48,10 @@ function Details({ game }) {
         </div>
       </div>
       <div className="control">
-        <button className="addtocart">ADD TO CART</button>
+        <button className="addtocart" onClick={() => final()}>
+          ADD TO CART
+        </button>
+
         <button className="wishlist">WISHLIST</button>
       </div>
     </div>

@@ -6,6 +6,7 @@ import ps4GamesReducer from "./ps4GamesReducer";
 import xboxGamesReducer from "./xboxGamesReducer";
 import fetchAllGamesReducer from "./fetchAllGamesReduces";
 import singleGameReducer from "./singleGameReducer";
+import cartItemsReducer from "./cartItemsReducer";
 const rootReducers = combineReducers({
   bannerTopGamesReducer: bannerTopGamesReducer,
   trendingGamesReducer: trendingGamesReducer,
@@ -14,6 +15,7 @@ const rootReducers = combineReducers({
   xboxGamesReducer: xboxGamesReducer,
   fetchAllGamesReducer: fetchAllGamesReducer,
   singleGameReducer: singleGameReducer,
+  cartItemsReducer: cartItemsReducer,
 });
 
 export default rootReducers;

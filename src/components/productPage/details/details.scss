@@ -88,16 +88,22 @@
     justify-content: space-evenly;
     button {
       flex: 1;
+      width: 100%;
       font-size: 2rem;
       height: 50px;
       @include ButtonDesign($redColor, $redColor, transparent, $whiteColor);
     }
-    .addtocart {
-      &:hover {
-        background-color: transparent;
-        border: 1px solid $goldenColor;
-        cursor: pointer;
-        color: $goldenColor;
+
+    .cart-wrapper {
+      flex: 1;
+      .addtocart {
+        width: 100%;
+        &:hover {
+          background-color: transparent;
+          border: 1px solid $goldenColor;
+          cursor: pointer;
+          color: $goldenColor;
+        }
       }
     }
     .wishlist {
