@@ -30,7 +30,7 @@ function Ps4XboxGames({ platform }) {
                     imageName={i.photo}
                     price={i.price}
                     rating={i.rating}
-                    key={i._id}
+                    productId={i._id}
                     got={true}
                   />
                 );
@@ -42,7 +42,7 @@ function Ps4XboxGames({ platform }) {
                     imageName={i.photo}
                     price={i.price}
                     rating={i.rating}
-                    key={i._id}
+                    productId={i._id}
                     got={true}
                     platform={i.platform[0]}
                   />

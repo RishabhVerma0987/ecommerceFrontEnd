@@ -36,15 +36,12 @@ function MainBox() {
                     <p>{i.description}</p>
                     <div className="pricing">
                       <div className="order-rating">
-                        <button>{i.price}</button>
+                        <button>$ {i.price}</button>
                         <p>{i.rating}</p>
                       </div>
                       <div className="cart-wish">
-                        <div style={{ marginRight: "1rem" }}>
-                          <CartSVG />
-                        </div>
                         <div>
-                          <WishListSVG />
+                          <WishListSVG productId={i._id} />
                         </div>
                       </div>
                     </div>

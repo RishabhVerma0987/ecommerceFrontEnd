@@ -1,8 +1,16 @@
 import React from "react";
-import CartSVG from "./cartsvg";
+import WishlistSVG from "./wishlistsvg";
 
 import "./card.scss";
-function Card({ gameName, imageName, price, rating, key, got, platform }) {
+function Card({
+  gameName,
+  imageName,
+  price,
+  rating,
+  productId,
+  got,
+  platform,
+}) {
   const imageHelper = () => {
     switch (platform) {
       case "PS4":
@@ -20,7 +28,7 @@ function Card({ gameName, imageName, price, rating, key, got, platform }) {
   };
 
   return (
-    <div className="productCard" key={key}>
+    <div className="productCard" key={productId}>
       <div className="dp">
         <img
           src={got ? imageName : require(`../../../assets/${imageName}.jpg`)}
@@ -46,7 +54,7 @@ function Card({ gameName, imageName, price, rating, key, got, platform }) {
         </div>
         <div className="cartWish">
           <div className="logoPlatform">{imageHelper()}</div>
-          <CartSVG />
+          <WishlistSVG productId={productId} />
         </div>
       </div>
     </div>

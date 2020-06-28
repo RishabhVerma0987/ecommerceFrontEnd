@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import "./svg.scss";
-function WishListSVG() {
+import { createCart } from "../../../store/actions/cart";
+import { useDispatch } from "react-redux";
+function WishListSVG({ productId }) {
+  //add to card and saved for later to true
   const [color, setColor] = useState(false);
+  const dispatch = useDispatch();
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="20"
       height="20"
       viewBox="0 0 34.355 30.348"
-      onClick={() => setColor(!color)}
+      onClick={() => {
+        setColor(!color);
+        dispatch(createCart(productId, true));
+      }}
     >
       <path
         id="Icon_feather-heart"

@@ -1,15 +1,13 @@
 import axios from "axios";
 import { url } from "./index";
-import { useHistory } from "react-router-dom";
 
 /**
  * @param description : create cart item
  * @param url : url/cart/:productId
  * @param dispatch : --
  */
-export const createCart = (productId, router) => {
+export const createCart = (productId, add) => {
   return function (dispatch) {
-    console.log(router);
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -18,6 +16,9 @@ export const createCart = (productId, router) => {
       .post(`${url}/cart/${productId}`, null, { headers: headers })
       .then((res) => {
         console.log(res.data);
+        if (add === true) {
+          dispatch(addToWishList(res.data.createdData._id.toString()));
+        }
       })
 
       .catch(function (error) {
@@ -82,6 +83,36 @@ export const deleteCartItem = (id) => {
       .then((res) => {
         console.log(res.data);
         dispatch(fetchCartItem());
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert("Some Problem Occured");
+      });
+  };
+};
+
+/**
+ * @param description : add to wishlist
+ * @param url : url/cart/:id
+ * @param dispatch : ---
+ */
+
+export const addToWishList = (cartId) => {
+  return function (dispatch) {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    return axios
+      .put(
+        `${url}/cart/${cartId}`,
+        { savedForLater: true },
+        { headers: headers }
+      )
+      .then((res) => {
+        console.log(res.data);
+        alert("added to wishlist");
       })
       .catch(function (error) {
         console.log(error);
