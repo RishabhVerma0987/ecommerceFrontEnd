@@ -3,7 +3,7 @@ import Navbar from "../main/navbar/navbar";
 import "./cart.scss";
 import { useDispatch, useSelector } from "react-redux";
 import PaymentTesting from "./paymentTesting/paymentTesting";
-import { fetchCartItem } from "../../store/actions/cart";
+import { fetchCartItem, deleteCartItem } from "../../store/actions/cart";
 
 function Cart() {
   const [showDelete, setDelete] = useState(false);
@@ -72,6 +72,7 @@ function Cart() {
                   <div
                     className="delete"
                     style={{ display: showDelete ? "" : "none" }}
+                    onClick={() => dispatch(deleteCartItem(game._id))}
                   >
                     <p>X</p>
                   </div>

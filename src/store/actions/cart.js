@@ -14,18 +14,16 @@ export const createCart = (productId, router) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-    return (
-      axios
-        .post(`${url}/cart/${productId}`, null, { headers: headers })
-        .then((res) => {
-          console.log(res.data);
-        })
+    return axios
+      .post(`${url}/cart/${productId}`, null, { headers: headers })
+      .then((res) => {
+        console.log(res.data);
+      })
 
-        .catch(function (error) {
-          console.log(error.response.data);
-          alert("Some Problem Occured");
-        })
-    );
+      .catch(function (error) {
+        console.log(error.response.data);
+        alert("Some Problem Occured");
+      });
   };
 };
 
@@ -58,5 +56,30 @@ export const cartItems = (data) => {
   return {
     type: "CART_ITEMS",
     payload: data,
+  };
+};
+
+/**
+ * @param description : delete cart items
+ * @param url : url/cart
+ * @param dispatch : cartItems
+ */
+
+export const deleteCartItem = (id) => {
+  return function (dispatch) {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+    return axios
+      .delete(`${url}/cart/${id}`, { headers: headers })
+      .then((res) => {
+        console.log(res.data);
+        dispatch(fetchCartItem());
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert("Some Problem Occured");
+      });
   };
 };
