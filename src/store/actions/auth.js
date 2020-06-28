@@ -25,7 +25,7 @@ export const registerUser = (name, email, password) => {
 /**
  * @param description : login
  * @param url : url/auth/login
- * @param dispatch : allGames()
+ * @param dispatch : login
  */
 
 export const loginUser = (email, password) => {
@@ -35,10 +35,23 @@ export const loginUser = (email, password) => {
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
+        dispatch(login(res.data));
       })
       .catch(function (error) {
-        console.log(error);
-        alert("Some Problem Occured");
+        console.log(error.response.data);
+        if (error.response.data.success === false) {
+          alert("Email , Password is wrong please try register or try again");
+        } else {
+          alert("Some Problem Occured");
+        }
       });
+  };
+};
+
+// * called by loginUser()
+export const login = (data) => {
+  return {
+    type: "LOGIN",
+    payload: data,
   };
 };

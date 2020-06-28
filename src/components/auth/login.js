@@ -1,10 +1,69 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./login.scss";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../store/actions/auth";
 function Auth() {
   const dispatch = useDispatch();
+  const login = useSelector((state) => state.authReducer);
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
+  const handleChange = (e) => {
+    switch (e.target.name) {
+      case "email":
+        setEmail(e.target.value);
+        break;
+      case "password":
+        setPassword(e.target.value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const checkEmail = () => {
+    const regex = /[^@]+@[^\.]+\..+/g;
+    const valid = regex.test(email);
+    if (valid) {
+      setErrorEmail(false);
+    } else {
+      setErrorEmail(true);
+    }
+  };
+  const checkPassword = () => {
+    if (password.length >= 6) {
+      setErrorPassword(false);
+    } else {
+      setErrorPassword(true);
+    }
+  };
+
+  useEffect(() => {
+    if (email || password !== "") {
+      //check email
+      checkEmail();
+      //check password
+      checkPassword();
+    }
+  }, [email, password]);
+
+  const goLogin = () => {
+    if (email && password !== "" && !errorEmail && !errorPassword) {
+      dispatch(loginUser(email, password));
+    } else {
+      alert("please fill field carefully");
+    }
+  };
+
+  useEffect(() => {
+    if (login !== null && login.sucess === true) {
+      history.goBack();
+    }
+  }, [login]);
+
   return (
     <div className="auth">
       <div className="login">
@@ -14,21 +73,51 @@ function Auth() {
         <div className="content">
           <div className="emailBox">
             <p className="label">Email Address</p>
-            <input type="email" />
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+            {errorEmail ? (
+              <p
+                className="error"
+                style={{
+                  fontSize: "1.5rem",
+                  color: "#cf123c",
+                  paddingTop: "0.5rem",
+                }}
+              >
+                Email not Valid
+              </p>
+            ) : null}
           </div>
           <div className="passwordBox">
             <div className="password">
               <p className="pass">Your password</p>
               <p className="lost">Lost password ?</p>
             </div>
-            <input type="password" />
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+            {errorPassword ? (
+              <p
+                className="error"
+                style={{
+                  fontSize: "1.5rem",
+                  color: "#cf123c",
+                  paddingTop: "0.5rem",
+                }}
+              >
+                Password should be more than 6
+              </p>
+            ) : null}
           </div>
           <div className="submit">
-            <button
-              onClick={() => dispatch(loginUser("run@gmail.com", "alpha098"))}
-            >
-              Submit
-            </button>
+            <button onClick={() => goLogin()}>Submit</button>
           </div>
           <div className="create">
             <p>
