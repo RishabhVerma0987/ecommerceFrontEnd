@@ -1,6 +1,12 @@
 import React from "react";
 import "./profile.scss";
+
 function Profile() {
+  const logout = () => {
+    localStorage.clear();
+    window.location.reload(false);
+  };
+
   return (
     <div className="profile">
       <div className="content">
@@ -21,6 +27,14 @@ function Profile() {
             <p className="lost">Lost password ?</p>
           </div>
           <input type="password" value="heelo" disabled={true} />
+        </div>
+        <div className="submit">
+          <button
+            style={{ backgroundColor: "#1a4c31", color: "#f1d18a" }}
+            onClick={() => logout()}
+          >
+            Logout
+          </button>
         </div>
         <div className="submit">
           <button>Delete Account</button>

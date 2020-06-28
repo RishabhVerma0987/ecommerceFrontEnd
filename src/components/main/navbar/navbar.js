@@ -36,9 +36,15 @@ function Navbar({ color }) {
           </div>
           <div className="right-links">
             <ul>
-              <Link to="/auth/login">
-                <li>Login</li>
-              </Link>
+              {localStorage.getItem("token") === null ? (
+                <Link to="/auth/login">
+                  <li>Login</li>
+                </Link>
+              ) : (
+                <Link to="/user/profile">
+                  <li>Profile</li>
+                </Link>
+              )}
 
               <Link to="/cart">
                 <li className="cart">
