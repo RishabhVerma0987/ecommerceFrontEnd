@@ -33,7 +33,7 @@ export const createCart = (productId, router) => {
  * @param dispatch : cartItems
  */
 
-export const fetchCartItem = () => {
+export const fetchCartItem = (bool) => {
   return function (dispatch) {
     const headers = {
       "Content-Type": "application/json",
@@ -42,7 +42,13 @@ export const fetchCartItem = () => {
     return axios
       .get(`${url}/cart`, { headers: headers })
       .then((res) => {
-        dispatch(cartItems(res.data.data));
+        let tempCart = [];
+        for (let i = 0; i < res.data.data.length; i++) {
+          if (res.data.data[i].savedForLater === bool) {
+            tempCart.push(res.data.data[i]);
+          }
+        }
+        dispatch(cartItems(tempCart));
       })
       .catch(function (error) {
         console.log(error);

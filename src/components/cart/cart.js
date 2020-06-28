@@ -11,7 +11,7 @@ function Cart() {
   const games = useSelector((state) => state.cartItemsReducer);
 
   useEffect(() => {
-    dispatch(fetchCartItem());
+    dispatch(fetchCartItem(false));
   }, []);
 
   const discountedPrice = (price, offer) => {
