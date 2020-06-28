@@ -7,7 +7,7 @@ function WishList() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.ps4GamesReducer);
   useEffect(() => {
-    dispatch(ps4Games());
+    // dispatch(ps4Games());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
