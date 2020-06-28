@@ -14,19 +14,6 @@ function loadScript(src) {
   });
 }
 
-const updateCart = async () => {
-  const data = await fetch(
-    "https://64463b9355eb.ngrok.io/api/v1/payment/update/5edbad183c58564b2895263f",
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  ).then((t) => t.json());
-  console.log(data);
-};
-
 const __DEV__ = document.domain === "localhost";
 function Payment() {
   const [name, setName] = useState("Mehul");
@@ -41,17 +28,18 @@ function Payment() {
     }
 
     const data = await fetch(
-      "https://64463b9355eb.ngrok.io/api/v1/payment/razorpay/5edbad183c58564b2895263f",
+      "https://f16acff90751.ngrok.io/api/v1/payment/razorpay/5ef85e82b6f0f82e6c8a7567",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          amount: 4500,
+          id: ["5ef30a96ca47e02478e5f4cc", "5ef30a96ca47e02478e5f4ce"],
         }),
       }
     ).then((t) => t.json());
+    console.log(data);
     const options = {
       key: __DEV__ ? "rzp_test_AlHhGmZ4ggo3m9" : "PRODUCTION_KEY",
       currency: data.currency,
@@ -59,10 +47,9 @@ function Payment() {
       order_id: data.id,
       name: "Donation",
       description: "Thank you for nothing. Please give us some money",
-      image: require("../../assets/logo.svg"),
+      image: require("../../../assets/logo.svg"),
       handler: function (response) {
         console.log(response);
-        updateCart();
       },
       prefill: {
         name,

@@ -12,6 +12,7 @@ export const registerUser = (name, email, password) => {
     return axios
       .post(`${url}/auth/register`, { name, email, password })
       .then((res) => {
+        console.log(res.data);
         localStorage.setItem("token", res.data.token);
       })
       .catch(function (error) {

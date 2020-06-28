@@ -82,7 +82,7 @@ function BrowseHome() {
   const [height, setHeight] = useState(0);
   const dispatch = useDispatch();
   const games = useSelector((state) => state.fetchAllGamesReducer);
-
+  console.log(games);
   const [selectedCategory, setSelectedCategory] = useState([]);
 
   const toggle = () => {

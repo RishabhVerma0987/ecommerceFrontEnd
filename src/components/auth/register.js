@@ -29,7 +29,7 @@ function Register() {
           <div className="submit">
             <button
               onClick={() =>
-                dispatch(registerUser("verma", "rup@gmail.com", "alpha098"))
+                dispatch(registerUser("jack", "jack@gmail.com", "alpha098"))
               }
             >
               Submit

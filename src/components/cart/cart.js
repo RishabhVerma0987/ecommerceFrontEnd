@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Navbar from "../main/navbar/navbar";
 import "./cart.scss";
+
+import PaymentTesting from "./paymentTesting/paymentTesting";
+
 function Cart() {
   const [showDelete, setDelete] = useState(false);
   return (
@@ -62,6 +65,7 @@ function Cart() {
           </div>
         </div>
       </div>
+      <PaymentTesting />
     </React.Fragment>
   );
 }
