@@ -296,6 +296,7 @@ function BrowseHome() {
                   key={i._id}
                   got={true}
                   platform={i.platform[0]}
+                  productId={i._id}
                 />
               );
             })}

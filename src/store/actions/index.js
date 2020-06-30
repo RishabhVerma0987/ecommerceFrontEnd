@@ -159,10 +159,11 @@ export const fetchSingleProduct = (id) => {
     return axios
       .get(`${url}/product/${id}`)
       .then((res) => {
+        console.log(res.data);
         dispatch(singleGame(res.data.data));
       })
       .catch(function (error) {
-        console.log(error);
+        console.log(error.response.data);
       });
   };
 };

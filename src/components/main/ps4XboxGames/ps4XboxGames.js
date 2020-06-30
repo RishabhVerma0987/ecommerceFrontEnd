@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "../resuables/card";
 import "./ps4xboxgames.scss";
 import { fetchPS4Games, fetchXBOXGames } from "../../../store/actions/index";
-
 function Ps4XboxGames({ platform }) {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.ps4GamesReducer);

@@ -4,6 +4,7 @@ import Background from "../background/background";
 import LatestMobile from "./latest-mobile";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLatestGamesBanner } from "../../../store/actions";
+import { Link } from "react-router-dom";
 function Latest() {
   const dispatch = useDispatch();
   const latestGamesReducer = useSelector((state) => state.latestGamesReducer);
@@ -35,7 +36,9 @@ function Latest() {
                 >
                   <h2>{game.title.replace(/ /g, "")}</h2>
 
-                  <img src={game.photo} alt={game.title}></img>
+                  <Link to={`/product/${game._id}`}>
+                    <img src={game.photo} alt={game.title}></img>
+                  </Link>
                 </div>
               );
             })}

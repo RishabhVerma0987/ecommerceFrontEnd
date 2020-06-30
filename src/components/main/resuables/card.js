@@ -1,5 +1,6 @@
 import React from "react";
 import WishlistSVG from "./wishlistsvg";
+import { Link } from "react-router-dom";
 
 import "./card.scss";
 function Card({
@@ -30,15 +31,19 @@ function Card({
   return (
     <div className="productCard" key={productId}>
       <div className="dp">
-        <img
-          src={got ? imageName : require(`../../../assets/${imageName}.jpg`)}
-          alt={imageName}
-        />
+        <Link to={`/product/${productId}`}>
+          <img
+            src={got ? imageName : require(`../../../assets/${imageName}.jpg`)}
+            alt={imageName}
+          />
+        </Link>
       </div>
       <div className="info">
         <div className="buy">
           <div className="title">
-            <h5>{gameName}</h5>
+            <Link to={`/product/${productId}`}>
+              <h5>{gameName}</h5>
+            </Link>
           </div>
           <div className="priceRating">
             <div className="price">

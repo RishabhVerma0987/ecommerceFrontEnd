@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./mainbox.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTrendingGames } from "../../../../store/actions";
-import CartSVG from "../../resuables/cartsvg";
 import WishListSVG from "../../resuables/wishlistsvg";
 import { Link } from "react-router-dom";
 
@@ -37,7 +36,7 @@ function MainBox() {
                     <div className="pricing">
                       <div className="order-rating">
                         <button>$ {i.price}</button>
-                        <p>{i.rating}</p>
+                        <p>{i.rating} ⭐</p>
                       </div>
                       <div className="cart-wish">
                         <div>

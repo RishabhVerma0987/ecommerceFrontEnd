@@ -24,6 +24,7 @@ function WishList() {
                   rating={i.product.rating}
                   key={i.id}
                   got={true}
+                  productId={i.product._id}
                 />
               );
             })}
