@@ -28,7 +28,7 @@ function Payment({ amountToBePayed, productIdList }) {
     }
 
     const data = await fetch(
-      `https://d769244ed11b.ngrok.io/api/v1/payment/razorpay/${localStorage.getItem(
+      `https://rishabhvermaeccom.azurewebsites.net/api/v1/payment/razorpay/${localStorage.getItem(
         "user_id"
       )}`,
       {
@@ -41,7 +41,7 @@ function Payment({ amountToBePayed, productIdList }) {
         }),
       }
     ).then((t) => t.json());
-    console.log(data);
+    console.log("data", data);
     const options = {
       key: __DEV__ ? "rzp_test_AlHhGmZ4ggo3m9" : "PRODUCTION_KEY",
       currency: data.currency,

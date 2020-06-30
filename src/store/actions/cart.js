@@ -46,7 +46,9 @@ export const fetchCartItem = (bool) => {
         let tempCart = [];
         for (let i = 0; i < res.data.data.length; i++) {
           if (res.data.data[i].savedForLater === bool) {
-            tempCart.push(res.data.data[i]);
+            if (res.data.data[i].purchased === false) {
+              tempCart.push(res.data.data[i]);
+            }
           }
         }
         dispatch(cartItems(tempCart));

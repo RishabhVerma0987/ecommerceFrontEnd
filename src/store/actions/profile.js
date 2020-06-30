@@ -36,7 +36,7 @@ export const fetchMyGames = () => {
     };
 
     return axios
-      .get(`https://d769244ed11b.ngrok.io/api/v1/mygames`, {
+      .get(`${url}/mygames`, {
         headers: headers,
       })
       .then((res) => {
