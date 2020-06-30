@@ -3,15 +3,16 @@ import Navbar from "../main/navbar/navbar";
 import "./cart.scss";
 import { useDispatch, useSelector } from "react-redux";
 import PaymentTesting from "./paymentTesting/paymentTesting";
-import { fetchCartItem, deleteCartItem } from "../../store/actions/cart";
-
+import { deleteCartItem } from "../../store/actions/cart";
+import { AuthMe } from "../../store/actions/auth";
+import Payment from "./paymentTesting/paymentTesting";
 function Cart() {
   const [showDelete, setDelete] = useState(false);
   const dispatch = useDispatch();
   const games = useSelector((state) => state.cartItemsReducer);
 
   useEffect(() => {
-    dispatch(fetchCartItem(false));
+    dispatch(AuthMe(true));
   }, []);
 
   const discountedPrice = (price, offer) => {
@@ -53,6 +54,15 @@ function Cart() {
       return totalDis;
     }
   };
+
+  const getProductIds = () => {
+    let product_id = [];
+    for (let i = 0; i < games?.length; i++) {
+      product_id.push(games[i].product._id.toString());
+    }
+    return product_id;
+  };
+
   console.log(games);
 
   return (
@@ -113,13 +123,17 @@ function Cart() {
               <p>Total Amount</p>
               <p className="money">${getPrice()}</p>
             </div>
-            <div className="pay-button">
+            {/* <div className="pay-button">
               <button className="without">PAY</button>
               <button className="with-amount">
                 PAY
                 <span style={{ marginLeft: "1rem" }}>${getPrice()}</span>
               </button>
-            </div>
+            </div> */}
+            <Payment
+              amountToBePayed={getPrice()}
+              productIdList={getProductIds()}
+            />
           </div>
         </div>
       </div>

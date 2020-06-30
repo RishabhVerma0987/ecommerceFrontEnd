@@ -1,5 +1,6 @@
 import axios from "axios";
 import { url } from "./index";
+import { fetchCartItem } from "./cart";
 
 /**
  * @param description : register
@@ -58,5 +59,44 @@ export const login = (data) => {
   return {
     type: "LOGIN",
     payload: data,
+  };
+};
+
+/**
+ * @param description : auth me
+ * @param url : url/auth/login
+ * @param dispatch : login
+ */
+
+export const AuthMe = (bool) => {
+  return function (dispatch) {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+    return axios
+      .get(`${url}/auth/me`, {
+        headers: headers,
+      })
+      .then((res) => {
+        console.log(res.data);
+
+        if (res.data.sucess === true) {
+          localStorage.setItem("user_email", res.data.data.email);
+          localStorage.setItem("user_id", res.data.data._id);
+        }
+
+        if (bool) {
+          dispatch(fetchCartItem(false));
+        }
+      })
+      .catch(function (error) {
+        console.log(error.response.data);
+        if (error.response.data.success === false) {
+          alert("Please Login or Register first");
+        } else {
+          alert("Some Problem Occured");
+        }
+      });
   };
 };

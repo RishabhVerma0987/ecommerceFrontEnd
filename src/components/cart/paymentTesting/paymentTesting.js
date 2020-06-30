@@ -15,8 +15,8 @@ function loadScript(src) {
 }
 
 const __DEV__ = document.domain === "localhost";
-function Payment() {
-  const [name, setName] = useState("Mehul");
+function Payment({ amountToBePayed, productIdList }) {
+  const [name, setName] = useState("John Doe");
 
   async function displayRazorpay() {
     const res = await loadScript(
@@ -28,14 +28,16 @@ function Payment() {
     }
 
     const data = await fetch(
-      "https://f16acff90751.ngrok.io/api/v1/payment/razorpay/5ef85e82b6f0f82e6c8a7567",
+      `https://d769244ed11b.ngrok.io/api/v1/payment/razorpay/${localStorage.getItem(
+        "user_id"
+      )}`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: ["5ef30a96ca47e02478e5f4cc", "5ef30a96ca47e02478e5f4ce"],
+          id: productIdList,
         }),
       }
     ).then((t) => t.json());
@@ -45,15 +47,15 @@ function Payment() {
       currency: data.currency,
       amount: data.amount.toString(),
       order_id: data.id,
-      name: "Donation",
-      description: "Thank you for nothing. Please give us some money",
+      name: "Payment",
+      description: "Thank you for showing us some interest",
       image: require("../../../assets/logo.svg"),
       handler: function (response) {
         console.log(response);
       },
       prefill: {
         name,
-        email: "vermarishabh@gmail.com",
+        email: "some@gmail.com",
         phone_number: "9899999999",
       },
     };
@@ -62,9 +64,16 @@ function Payment() {
   }
 
   return (
-    <div>
-      <h2>Payment</h2>
-      <button onClick={displayRazorpay}>PAY</button>
+    <div className="pay-button">
+      <button className="without" onClick={displayRazorpay}>
+        PAY
+      </button>
+      <button className="with-amount" onClick={displayRazorpay}>
+        PAY
+        <span style={{ marginLeft: "1rem", color: "#f5fefb" }}>
+          ${amountToBePayed}
+        </span>
+      </button>
     </div>
   );
 }

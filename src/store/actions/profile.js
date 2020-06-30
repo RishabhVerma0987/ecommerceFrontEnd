@@ -21,3 +21,37 @@ export const loginUser = (email, password) => {
       });
   };
 };
+
+/**
+ * @param description : fetch all of my games
+ * @param url : url/mygames
+ * @param dispatch : mygame
+ */
+
+export const fetchMyGames = () => {
+  return function (dispatch) {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    return axios
+      .get(`https://d769244ed11b.ngrok.io/api/v1/mygames`, {
+        headers: headers,
+      })
+      .then((res) => {
+        console.log(res.data);
+        dispatch(mygames(res.data.games));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+// * called by fetchXBOXGames()
+export const mygames = (data) => {
+  return {
+    type: "MY_GAMES",
+    payload: data,
+  };
+};

@@ -82,7 +82,7 @@ export const deleteCartItem = (id) => {
       .delete(`${url}/cart/${id}`, { headers: headers })
       .then((res) => {
         console.log(res.data);
-        dispatch(fetchCartItem());
+        dispatch(fetchCartItem(false));
       })
       .catch(function (error) {
         console.log(error);

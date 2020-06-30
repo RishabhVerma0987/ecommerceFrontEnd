@@ -8,7 +8,7 @@ import fetchAllGamesReducer from "./fetchAllGamesReduces";
 import singleGameReducer from "./singleGameReducer";
 import cartItemsReducer from "./cartItemsReducer";
 import authReducer from "./authReducer";
-
+import myGamesReducer from "./mygamesReducer";
 const rootReducers = combineReducers({
   bannerTopGamesReducer: bannerTopGamesReducer,
   trendingGamesReducer: trendingGamesReducer,
@@ -19,6 +19,7 @@ const rootReducers = combineReducers({
   singleGameReducer: singleGameReducer,
   cartItemsReducer: cartItemsReducer,
   authReducer: authReducer,
+  myGamesReducer: myGamesReducer,
 });
 
 export default rootReducers;
