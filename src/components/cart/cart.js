@@ -123,6 +123,7 @@ function Cart() {
                 })
               ) : (
                 <p
+                  className="no-item"
                   style={{
                     position: "absolute",
                     top: "50%",

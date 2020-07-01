@@ -72,6 +72,7 @@ export const fetchCartItem = (bool) => {
             }
           }
         }
+        console.log(tempCart);
         dispatch(cartItems(tempCart));
       })
       .catch(function (error) {

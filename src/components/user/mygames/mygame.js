@@ -17,7 +17,7 @@ function MyGames() {
 
   return (
     <div className="mygames">
-      <div className="cart-contents" style={{ paddingBottom: "4rem" }}>
+      <div className="cart-contents" style={{ paddingBottom: "10rem" }}>
         {games ? (
           games?.map((game) => {
             return (
@@ -33,7 +33,6 @@ function MyGames() {
                     </p>
                   </div>
                 </div>
-                <div className="right">$ 35.00 /-</div>
               </div>
             );
           })

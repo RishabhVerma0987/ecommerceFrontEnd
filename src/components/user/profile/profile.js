@@ -17,7 +17,7 @@ function Profile() {
           </div>
           <input
             type="email"
-            value={"vermarisahbh0987@gmail.com"}
+            value={localStorage.getItem("user_email")}
             disabled={true}
           />
         </div>
