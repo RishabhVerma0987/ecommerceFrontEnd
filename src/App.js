@@ -7,6 +7,7 @@ import BrowseHome from "./components/browse/home/browsehome";
 import ProductPage from "./components/productpage/productpage";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
+import Footer from "./components/main/footer/footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cart from "./components/cart/cart";
 import UserPage from "./components/user/userpage";
@@ -42,6 +43,7 @@ function App() {
           </Route>
           <Route path="/user/:header" component={UserPage}></Route>
         </Switch>
+        <Footer />
         <ToastContainer />
       </Router>
     </div>

@@ -143,7 +143,6 @@ function Cart() {
           <Loading />
         )}
       </div>
-      <PaymentTesting />
     </React.Fragment>
   );
 }
