@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import { useHistory } from "react-router-dom";
+import { notify } from "../../../store/actions/helper";
 function loadScript(src) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
@@ -15,9 +16,9 @@ function loadScript(src) {
 }
 
 function Payment({ amountToBePayed, productIdList }) {
-  const [name, setName] = useState("John Doe");
-
+  const history = useHistory();
   async function displayRazorpay() {
+    setShow(false);
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
@@ -51,30 +52,43 @@ function Payment({ amountToBePayed, productIdList }) {
       image: require("../../../assets/logo.svg"),
       handler: function (response) {
         console.log(response);
+        notify(false, "Payment Sucessfull !! 🙌", null);
+        history.push("/user/mygames");
       },
       prefill: {
-        name,
-        email: "some@gmail.com",
+        name: "John Doe",
+        email: localStorage.getItem("user_email"),
         phone_number: "9899999999",
       },
+      onclose: setShow(true),
     };
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   }
 
-  return (
-    <div className="pay-button">
-      <button className="without" onClick={displayRazorpay}>
-        PAY
-      </button>
-      <button className="with-amount" onClick={displayRazorpay}>
-        PAY
-        <span style={{ marginLeft: "1rem", color: "#f5fefb" }}>
-          ${amountToBePayed}
-        </span>
-      </button>
-    </div>
-  );
+  const [show, setShow] = useState(true);
+
+  if (show) {
+    return (
+      <div className="pay-button">
+        <button className="without" onClick={displayRazorpay}>
+          PAY
+        </button>
+        <button className="with-amount" onClick={displayRazorpay}>
+          PAY
+          <span style={{ marginLeft: "1rem", color: "#f5fefb" }}>
+            ${amountToBePayed}
+          </span>
+        </button>
+      </div>
+    );
+  } else {
+    return (
+      <div className="pay-button">
+        <p>Please Wait ...</p>
+      </div>
+    );
+  }
 }
 
 export default Payment;
