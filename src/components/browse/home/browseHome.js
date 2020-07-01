@@ -6,9 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllGames } from "../../../store/actions/browse";
 import Card from "../../main/resuables/card";
 import { toast } from "react-toastify";
-import Laoding from "../../main/resuables/loading";
 import Loading from "../../main/resuables/loading";
+import AOS from "aos";
+import "aos/dist/aos.css";
 var array = require("lodash/array");
+
 function BrowseHome() {
   const notifySucess = () =>
     toast.dark(<p>Some of the filter might not work , work in progress</p>, {
@@ -85,6 +87,9 @@ function BrowseHome() {
   useEffect(() => {
     dispatch(fetchAllGames());
     notifySucess();
+    AOS.init({
+      duration: 800,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [height, setHeight] = useState(0);
@@ -187,7 +192,7 @@ function BrowseHome() {
     <React.Fragment>
       <Navbar color={"#29282f"} />
       <div className="browseHome">
-        <div className="filter">
+        <div className="filter" data-aos="fade-right">
           <div className="box">
             {category.map((i) => {
               return (

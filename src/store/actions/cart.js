@@ -105,6 +105,7 @@ export const deleteCartItem = (id) => {
       .delete(`${url}/cart/${id}`, { headers: headers })
       .then((res) => {
         console.log(res.data);
+        notify(true, "Deleted Sucessfully", null);
         dispatch(fetchCartItem(false));
       })
       .catch(function (error) {

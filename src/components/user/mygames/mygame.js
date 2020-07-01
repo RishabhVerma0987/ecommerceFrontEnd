@@ -3,11 +3,16 @@ import "./mygames.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMyGames } from "../../../store/actions/profile";
 import Loading from "../../main/resuables/loading";
+import AOS from "aos";
+import "aos/dist/aos.css";
 function MyGames() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.myGamesReducer);
   useEffect(() => {
     dispatch(fetchMyGames());
+    AOS.init({
+      duration: 1500,
+    });
   }, []);
 
   return (
@@ -16,7 +21,7 @@ function MyGames() {
         {games ? (
           games?.map((game) => {
             return (
-              <div className="item">
+              <div className="item" data-aos="fade-down">
                 <div className="left">
                   <div className="display-photo">
                     <img src={game[0].photo} alt={game[0].title}></img>
