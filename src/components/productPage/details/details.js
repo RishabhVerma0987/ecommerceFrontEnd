@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./details.scss";
 import { useDispatch } from "react-redux";
 import { createCart } from "../../../store/actions/cart";
 import { useHistory } from "react-router-dom";
+import Loading from "../../main/resuables/loading";
 import AOS from "aos";
 import "aos/dist/aos.css";
 function Details({ game }) {
@@ -23,6 +24,7 @@ function Details({ game }) {
   };
 
   const final = () => {
+    setLoading(true);
     dispatch(createCart(game._id, null)).then(() => {
       history.push("/cart");
     });
@@ -32,36 +34,47 @@ function Details({ game }) {
       duration: 1500,
     });
   }, []);
-  return (
-    <div className="details">
-      <div className="title">
-        <p data-aos="fade-down">{game?.title}</p>
-      </div>
-      <div className="rating" data-aos="fade-right">
-        <p>
-          {game?.rating} <span>⭐</span>
-        </p>
-        <div className="feedback">{game?.company}</div>
-      </div>
-      <div className="description" data-aos="fade-up">
-        <p>{game?.description}</p>
-      </div>
-      <div className="price" data-aos="fade-up">
-        <p>$ {price(game?.price, game?.offer)} /- </p>
-        <div className="off">
-          <p className="tag">$ {game?.price}</p>
-          <p className="style">{game?.offer}% OFF</p>
+
+  const [loading, setLoading] = useState(false);
+
+  if (loading === false) {
+    return (
+      <div className="details">
+        <div className="title">
+          <p data-aos="fade-down">{game?.title}</p>
+        </div>
+        <div className="rating" data-aos="fade-right">
+          <p>
+            {game?.rating} <span>⭐</span>
+          </p>
+          <div className="feedback">{game?.company}</div>
+        </div>
+        <div className="description" data-aos="fade-down">
+          <p>{game?.description}</p>
+        </div>
+        <div className="price" data-aos="fade-down">
+          <p>$ {price(game?.price, game?.offer)} /- </p>
+          <div className="off">
+            <p className="tag">$ {game?.price}</p>
+            <p className="style">{game?.offer}% OFF</p>
+          </div>
+        </div>
+        <div className="control" data-aos="fade-right">
+          <button className="addtocart" onClick={() => final()}>
+            ADD TO CART
+          </button>
+
+          <button className="wishlist">WISHLIST</button>
         </div>
       </div>
-      <div className="control" data-aos="fade-down">
-        <button className="addtocart" onClick={() => final()}>
-          ADD TO CART
-        </button>
-
-        <button className="wishlist">WISHLIST</button>
+    );
+  } else {
+    return (
+      <div className="details" style={{ position: "relative" }}>
+        <Loading />
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Details;

@@ -94,16 +94,13 @@
       @include ButtonDesign($redColor, $redColor, transparent, $whiteColor);
     }
 
-    .cart-wrapper {
-      flex: 1;
-      .addtocart {
-        width: 100%;
-        &:hover {
-          background-color: transparent;
-          border: 1px solid $goldenColor;
-          cursor: pointer;
-          color: $goldenColor;
-        }
+    .addtocart {
+      width: 100%;
+      &:hover {
+        background-color: transparent;
+        border: 1px solid $goldenColor;
+        cursor: pointer;
+        color: $goldenColor;
       }
     }
     .wishlist {
