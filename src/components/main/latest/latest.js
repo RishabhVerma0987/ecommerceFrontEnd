@@ -5,12 +5,17 @@ import LatestMobile from "./latest-mobile";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLatestGamesBanner } from "../../../store/actions";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 function Latest() {
   const dispatch = useDispatch();
   const latestGamesReducer = useSelector((state) => state.latestGamesReducer);
 
   useEffect(() => {
     dispatch(fetchLatestGamesBanner());
+    AOS.init({
+      duration: 800,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -33,6 +38,7 @@ function Latest() {
                   onMouseEnter={() => {
                     setImage(game.photo);
                   }}
+                  data-aos="zoom-out"
                 >
                   <h2>{game.title.replace(/ /g, "")}</h2>
 

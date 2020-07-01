@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./navbar.scss";
 import { Link } from "react-router-dom";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 function Navbar({ color }) {
   const [open, setOpen] = useState(false);
 
@@ -12,6 +13,12 @@ function Navbar({ color }) {
       return "clip";
     }
   };
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <React.Fragment>
@@ -21,7 +28,7 @@ function Navbar({ color }) {
             <img src={require("../../../assets/logo.svg")} alt="LOGO"></img>
           </div>
         </Link>
-        <div className="nav-items">
+        <div className="nav-items" data-aos="fade-right">
           <div className="links">
             <ul>
               <Link to="/">
@@ -34,7 +41,7 @@ function Navbar({ color }) {
               <li>Contact Us</li>
             </ul>
           </div>
-          <div className="right-links">
+          <div className="right-links" data-aos="fade-down">
             <ul>
               {localStorage.getItem("token") === null ? (
                 <Link to="/auth/login">

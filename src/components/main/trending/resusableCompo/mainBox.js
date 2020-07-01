@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTrendingGames } from "../../../../store/actions";
 import WishListSVG from "../../resuables/wishlistsvg";
 import { Link } from "react-router-dom";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 function MainBox() {
   const dispatch = useDispatch();
   const stateTrendingGames = useSelector((state) => state.trendingGamesReducer);
@@ -12,6 +13,10 @@ function MainBox() {
   useEffect(() => {
     dispatch(fetchTrendingGames());
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    AOS.init({
+      duration: 800,
+    });
+    // AOS.refresh();
   }, []);
 
   return (
@@ -21,7 +26,7 @@ function MainBox() {
         {stateTrendingGames
           ? stateTrendingGames.map((i) => {
               return (
-                <div className="card" key={i._id}>
+                <div className="card" key={i._id} data-aos="zoom-in-up">
                   <Link to={`/product/${i._id}`}>
                     <div className="image">
                       <img src={i.photo} alt="cyberpunk"></img>

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import WishlistSVG from "./wishlistsvg";
 import { Link } from "react-router-dom";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./card.scss";
 function Card({
   gameName,
@@ -12,6 +13,12 @@ function Card({
   got,
   platform,
 }) {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const imageHelper = () => {
     switch (platform) {
       case "PS4":
@@ -29,7 +36,7 @@ function Card({
   };
 
   return (
-    <div className="productCard" key={productId}>
+    <div className="productCard" key={productId} data-aos="zoom-in-up">
       <div className="dp">
         <Link to={`/product/${productId}`}>
           <img
