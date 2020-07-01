@@ -7,6 +7,7 @@ import Details from "./details/details";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleProduct } from "../../store/actions/index";
 import SimpleReactLightbox from "simple-react-lightbox";
+import Loading from "../main/resuables/loading";
 function ProductPage(props) {
   const dispatch = useDispatch();
   const game = useSelector((state) => state.singleGameReducer);
@@ -16,6 +17,23 @@ function ProductPage(props) {
   useEffect(() => {
     dispatch(fetchSingleProduct(id));
   }, []);
+
+  const renderScreen = () => {
+    if (game) {
+      return (
+        <div className="productPage">
+          <VideoShowCase game={game} />
+          <Details game={game} />
+        </div>
+      );
+    } else {
+      return (
+        <div className="productPage">
+          <Loading />
+        </div>
+      );
+    }
+  };
 
   return (
     <React.Fragment>
@@ -27,11 +45,7 @@ function ProductPage(props) {
         <div className="mobile-imports">
           <Navbar color={"#1F2227"} />
         </div>
-
-        <div className="productPage">
-          <VideoShowCase game={game} />
-          <Details game={game} />
-        </div>
+        {renderScreen()}
       </SimpleReactLightbox>
     </React.Fragment>
   );

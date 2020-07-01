@@ -1,6 +1,6 @@
 import axios from "axios";
 import { url } from "./index";
-
+import { notify } from "./helper";
 /**
  * @param description : wishlist
  * @param url : url/auth/login
@@ -13,11 +13,12 @@ export const loginUser = (email, password) => {
       .post(`${url}/auth/login`, { email, password })
       .then((res) => {
         console.log(res.data);
+        notify(false, "Successfully loged in ✌", null);
         localStorage.setItem("token", res.data.token);
       })
       .catch(function (error) {
         console.log(error);
-        alert("Some Problem Occured");
+        notify(true, "Some problem occured!!", null);
       });
   };
 };

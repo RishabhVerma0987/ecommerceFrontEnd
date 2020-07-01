@@ -61,12 +61,14 @@ function Navbar({ color }) {
                   ></img>
                 </li>
               </Link>
-              <li className="wishlist">
-                <img
-                  src={require("../../../assets/wishlist.svg")}
-                  alt="cart"
-                ></img>
-              </li>
+              <Link to="/user/wishlist">
+                <li className="wishlist">
+                  <img
+                    src={require("../../../assets/wishlist.svg")}
+                    alt="cart"
+                  ></img>
+                </li>
+              </Link>
             </ul>
           </div>
         </div>
@@ -84,12 +86,14 @@ function Navbar({ color }) {
                 <img src={require("../../../assets/cart.svg")} alt="cart"></img>
               </li>
             </Link>
-            <li>
-              <img
-                src={require("../../../assets/wishlist.svg")}
-                alt="cart"
-              ></img>
-            </li>
+            <Link to="/user/wishlist">
+              <li className="wishlist">
+                <img
+                  src={require("../../../assets/wishlist.svg")}
+                  alt="cart"
+                ></img>
+              </li>
+            </Link>
             <li
               className="hamburger"
               onClick={() => {
@@ -108,9 +112,15 @@ function Navbar({ color }) {
             </Link>
             <li>About Us</li>
             <li>Contact Us</li>
-            <Link to="/auth/login">
-              <li>Login</li>
-            </Link>
+            {localStorage.getItem("token") === null ? (
+              <Link to="/auth/login">
+                <li>Login</li>
+              </Link>
+            ) : (
+              <Link to="/user/profile">
+                <li>Profile</li>
+              </Link>
+            )}
           </ul>
         </div>
       </div>

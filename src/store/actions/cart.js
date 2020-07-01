@@ -1,7 +1,6 @@
 import axios from "axios";
 import { url } from "./index";
-import { toast } from "react-toastify";
-import React from "react";
+import { notify } from "./helper";
 
 /**
  * @param description : create cart item
@@ -39,13 +38,13 @@ export const createCart = (productId, add) => {
 
             .catch(function (error) {
               console.log(error.response.data);
-              alert("Some Problem Occured");
+              notify(true, "Some problem occured!!", null);
             });
         }
       })
       .catch(function (error) {
         console.log(error.response.data);
-        alert("Some Problem Occured");
+        notify(true, "Some problem occured!!", null);
       });
   };
 };
@@ -77,7 +76,7 @@ export const fetchCartItem = (bool) => {
       })
       .catch(function (error) {
         console.log(error);
-        alert("Some Problem Occured");
+        notify(true, "Some problem occured!!", null);
       });
   };
 };
@@ -110,7 +109,7 @@ export const deleteCartItem = (id) => {
       })
       .catch(function (error) {
         console.log(error);
-        alert("Some Problem Occured");
+        notify(true, "Some problem occured!!", null);
       });
   };
 };
@@ -121,13 +120,6 @@ export const deleteCartItem = (id) => {
  * @param dispatch : ---
  */
 export const addToWishList = (cartId) => {
-  const notifySucess = () =>
-    toast.dark(<p>Added to Wishlist !!</p>, {
-      position: toast.POSITION.TOP_CENTER,
-    });
-
-  const notifyError = () => toast.error("Some problem occured .");
-
   return function (dispatch) {
     const headers = {
       "Content-Type": "application/json",
@@ -142,11 +134,11 @@ export const addToWishList = (cartId) => {
       )
       .then((res) => {
         console.log(res.data);
-        notifySucess();
+        notify(false, "Added to Wishlist !!", null);
       })
       .catch(function (error) {
         console.log(error);
-        notifyError();
+        notify(true, "Some problem occured ", null);
       });
   };
 };
