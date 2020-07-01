@@ -12,15 +12,35 @@ export const createCart = (productId, add) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
+
     return axios
-      .post(`${url}/cart/${productId}`, null, { headers: headers })
+      .get(`${url}/cart`, { headers: headers })
       .then((res) => {
-        console.log(res.data);
-        if (add === true) {
-          dispatch(addToWishList(res.data.createdData._id.toString()));
+        let present = false;
+        for (let i = 0; i < res.data.data.length; i++) {
+          if (
+            productId === res.data.data[i].product._id.toString() &&
+            res.data.data[i].savedForLater === false
+          ) {
+            present = true;
+          }
+        }
+        if (present === false) {
+          return axios
+            .post(`${url}/cart/${productId}`, null, { headers: headers })
+            .then((res) => {
+              console.log(res.data);
+              if (add === true) {
+                dispatch(addToWishList(res.data.createdData._id.toString()));
+              }
+            })
+
+            .catch(function (error) {
+              console.log(error.response.data);
+              alert("Some Problem Occured");
+            });
         }
       })
-
       .catch(function (error) {
         console.log(error.response.data);
         alert("Some Problem Occured");

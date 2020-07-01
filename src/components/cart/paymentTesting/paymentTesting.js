@@ -14,7 +14,6 @@ function loadScript(src) {
   });
 }
 
-const __DEV__ = document.domain === "localhost";
 function Payment({ amountToBePayed, productIdList }) {
   const [name, setName] = useState("John Doe");
 
@@ -43,7 +42,7 @@ function Payment({ amountToBePayed, productIdList }) {
     ).then((t) => t.json());
     console.log("data", data);
     const options = {
-      key: __DEV__ ? "rzp_test_AlHhGmZ4ggo3m9" : "PRODUCTION_KEY",
+      key: "rzp_test_AlHhGmZ4ggo3m9",
       currency: data.currency,
       amount: data.amount.toString(),
       order_id: data.id,
