@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./profile.scss";
+import { AuthMe } from "../../../store/actions/auth";
+import { useDispatch } from "react-redux";
 
 function Profile() {
   const logout = () => {
     localStorage.clear();
     window.location.reload(false);
   };
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(AuthMe(false));
+  });
 
   return (
     <div className="profile">

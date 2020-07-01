@@ -76,7 +76,7 @@ function Cart() {
       <div className="my-cart">
         <h1>My Cart</h1>
 
-        <div className="cart-container">
+        <div className="cart-container" style={{ paddingBottom: "4rem" }}>
           <div className="cart-contents">
             {games ? (
               games.length !== 0 ? (

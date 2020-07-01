@@ -7,45 +7,65 @@ import { notify } from "./helper";
  * @param url : url/cart/:productId
  * @param dispatch : --
  */
-export const createCart = (productId, add) => {
+export const createCart = (productId, add, cart) => {
   return function (dispatch) {
+    console.log("thi ran");
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    return axios
-      .get(`${url}/cart`, { headers: headers })
-      .then((res) => {
-        let present = false;
-        for (let i = 0; i < res.data.data.length; i++) {
-          if (
-            productId === res.data.data[i].product._id.toString() &&
-            res.data.data[i].savedForLater === false
-          ) {
-            present = true;
+    if (cart) {
+      return axios
+        .post(`${url}/cart/${productId}`, null, { headers: headers })
+        .then((res) => {
+          console.log(res.data);
+          if (add === true) {
+            dispatch(addToWishList(res.data.createdData._id.toString()));
           }
-        }
-        if (present === false) {
-          return axios
-            .post(`${url}/cart/${productId}`, null, { headers: headers })
-            .then((res) => {
-              console.log(res.data);
-              if (add === true) {
-                dispatch(addToWishList(res.data.createdData._id.toString()));
-              }
-            })
+        })
 
-            .catch(function (error) {
-              console.log(error.response.data);
-              notify(true, "Some problem occured!!", null);
-            });
-        }
-      })
-      .catch(function (error) {
-        console.log(error.response.data);
-        notify(true, "Some problem occured!!", null);
-      });
+        .catch(function (error) {
+          console.log(error.response.data);
+          notify(true, "Some problem occured!!", null);
+        });
+    } else {
+      return axios
+        .get(`${url}/cart`, { headers: headers })
+        .then((res) => {
+          console.log(productId);
+          let present = false;
+          console.log(res.data.data);
+          for (let i = 0; i < res.data.data.length; i++) {
+            if (
+              productId === res.data.data[i].product._id.toString() &&
+              res.data.data[i].savedForLater === true
+            ) {
+              present = true;
+            }
+          }
+          console.log("present", present);
+          if (present === false) {
+            return axios
+              .post(`${url}/cart/${productId}`, null, { headers: headers })
+              .then((res) => {
+                console.log(res.data);
+                if (add === true) {
+                  dispatch(addToWishList(res.data.createdData._id.toString()));
+                }
+              })
+
+              .catch(function (error) {
+                console.log(error.response.data);
+                notify(true, "Some problem occured!!", null);
+              });
+          }
+        })
+        .catch(function (error) {
+          console.log(error.response.data);
+          notify(true, "Some problem occured!!", null);
+        });
+    }
   };
 };
 
@@ -64,6 +84,7 @@ export const fetchCartItem = (bool) => {
     return axios
       .get(`${url}/cart`, { headers: headers })
       .then((res) => {
+        console.log(res.data);
         let tempCart = [];
         for (let i = 0; i < res.data.data.length; i++) {
           if (res.data.data[i].savedForLater === bool) {
@@ -123,6 +144,7 @@ export const deleteCartItem = (id) => {
  */
 export const addToWishList = (cartId) => {
   return function (dispatch) {
+    console.log("it ran");
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,

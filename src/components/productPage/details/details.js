@@ -25,7 +25,7 @@ function Details({ game }) {
 
   const final = () => {
     setLoading(true);
-    dispatch(createCart(game._id, null)).then(() => {
+    dispatch(createCart(game._id, null, true)).then(() => {
       history.push("/cart");
     });
   };
@@ -34,6 +34,13 @@ function Details({ game }) {
       duration: 1500,
     });
   }, []);
+
+  const addToWish = () => {
+    setLoading(true);
+    dispatch(createCart(game._id, true)).then(() => {
+      history.push("/user/wishlist");
+    });
+  };
 
   const [loading, setLoading] = useState(false);
 
@@ -64,7 +71,9 @@ function Details({ game }) {
             ADD TO CART
           </button>
 
-          <button className="wishlist">WISHLIST</button>
+          <button className="wishlist" onClick={() => addToWish()}>
+            WISHLIST
+          </button>
         </div>
       </div>
     );

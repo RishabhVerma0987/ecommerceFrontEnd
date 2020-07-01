@@ -19,23 +19,28 @@ function MyGames() {
     <div className="mygames">
       <div className="cart-contents" style={{ paddingBottom: "10rem" }}>
         {games ? (
-          games?.map((game) => {
-            return (
-              <div className="item" data-aos="fade-down">
-                <div className="left">
-                  <div className="display-photo">
-                    <img src={game[0].photo} alt={game[0].title}></img>
-                  </div>
-                  <div className="information">
-                    <h4>{game[0].title}</h4>
-                    <p>
-                      {game[0].rating} <span>⭐</span> , By {game[0].company[0]}
-                    </p>
+          games.length !== 0 ? (
+            games?.map((game) => {
+              return (
+                <div className="item" data-aos="fade-down">
+                  <div className="left">
+                    <div className="display-photo">
+                      <img src={game[0].photo} alt={game[0].title}></img>
+                    </div>
+                    <div className="information">
+                      <h4>{game[0].title}</h4>
+                      <p>
+                        {game[0].rating} <span>⭐</span> , By{" "}
+                        {game[0].company[0]}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })
+              );
+            })
+          ) : (
+            <p style={{ color: "grey" }}>No Items to show</p>
+          )
         ) : (
           <Loading />
         )}

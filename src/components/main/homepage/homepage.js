@@ -6,6 +6,7 @@ import "./homepage.scss";
 import Background from "../background/background";
 import { Link } from "react-router-dom";
 import Loading from "../resuables/loading";
+import { AuthMe } from "../../../store/actions/auth";
 function Homepage() {
   const dispatch = useDispatch();
   const stateTopGames = useSelector((state) => state.bannerTopGamesReducer);
@@ -13,6 +14,7 @@ function Homepage() {
   useEffect(() => {
     dispatch(fetchTopGamesBanner());
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(AuthMe(false));
   }, []);
 
   const changeScale = (id) => {

@@ -17,19 +17,23 @@ function WishList() {
         <div className="container">
           <div className="content" style={{ paddingBottom: "4rem" }}>
             {games ? (
-              games?.map((i) => {
-                return (
-                  <Card
-                    gameName={i.product.title}
-                    imageName={i.product.photo}
-                    price={i.product.price}
-                    rating={i.product.rating}
-                    key={i.id}
-                    got={true}
-                    productId={i.product._id}
-                  />
-                );
-              })
+              games.length !== 0 ? (
+                games?.map((i) => {
+                  return (
+                    <Card
+                      gameName={i.product.title}
+                      imageName={i.product.photo}
+                      price={i.product.price}
+                      rating={i.product.rating}
+                      key={i.id}
+                      got={true}
+                      productId={i.product._id}
+                    />
+                  );
+                })
+              ) : (
+                <p style={{ color: "grey" }}>No Items to show</p>
+              )
             ) : (
               <Loading />
             )}
