@@ -5,8 +5,8 @@ import Navbar from "../navbar/navbar";
 import "./homepage.scss";
 import Background from "../background/background";
 import { Link } from "react-router-dom";
-import Loading from "../resuables/loading";
 import { AuthMe } from "../../../store/actions/auth";
+import { motion } from "framer-motion";
 function Homepage() {
   const dispatch = useDispatch();
   const stateTopGames = useSelector((state) => state.bannerTopGamesReducer);
@@ -35,20 +35,36 @@ function Homepage() {
       <Background image={"banner"} bgColor={"#1a4c31"} />
       <Navbar />
       <div className="homepageBanner">
-        <div className="content">
+        <motion.div
+          className="content"
+          initial={{
+            opacity: 0,
+            top: -30,
+          }}
+          transition={{ duration: 1 }}
+          animate={{ opacity: 1, top: 0 }}
+        >
           <h1>
-            Browse Best Games <br />
-            Online
+            Browse Best Games <br /> Online
           </h1>
+
           <p>at very affordable prices!!</p>
-          <button>Browse All</button>
-        </div>
+          <Link to="/browse/all">
+            <button>Browse All</button>
+          </Link>
+        </motion.div>
         {stateTopGames ? (
           <div className="upcommingGames">
             {stateTopGames.map((game, index) => {
-              console.log(index);
               return (
-                <div
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    top: -30,
+                    left: -20,
+                  }}
+                  transition={{ duration: 0.5 }}
+                  animate={{ opacity: 1, top: 0, left: 0 }}
                   className="box"
                   key={index}
                   style={{
@@ -67,13 +83,11 @@ function Homepage() {
                     <img src={game.photo} alt={game.title}></img>
                     <div className="contentBox"></div>
                   </Link>
-                </div>
+                </motion.div>
               );
             })}
           </div>
-        ) : (
-          <Loading />
-        )}
+        ) : null}
       </div>
     </React.Fragment>
   );
