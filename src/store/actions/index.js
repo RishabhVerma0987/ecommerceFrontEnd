@@ -43,13 +43,14 @@ export const topGamesBanner = (data) => {
 export const fetchTrendingGames = () => {
   return function (dispatch) {
     var oneWeekAgo = new Date();
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 14);
 
     return axios
       .get(
         `${url}/product?select=title,photo,description,price,rating,sold,createdAt&sort=-sold&updatedAt[gt]=${oneWeekAgo}&limit=4`
       )
       .then((res) => {
+        console.log("trending product", res.data);
         dispatch(trendingGames(res.data.data));
       })
       .catch(function (error) {
