@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllGames } from "../../../store/actions/browse";
 import Card from "../../main/resuables/card";
 import { toast } from "react-toastify";
+import Laoding from "../../main/resuables/loading";
+import Loading from "../../main/resuables/loading";
 var array = require("lodash/array");
 function BrowseHome() {
   const notifySucess = () =>
@@ -257,9 +259,6 @@ function BrowseHome() {
                 );
               })}
             </div>
-            <div className="apply">
-              <button onClick={toggle}>Apply filter</button>
-            </div>
           </AnimateHeight>
         </div>
         <div className="showcase">
@@ -292,20 +291,24 @@ function BrowseHome() {
             </ul>
           </div>
           <div className="card-showcase">
-            {games?.map((i) => {
-              return (
-                <Card
-                  gameName={i.title}
-                  imageName={i.photo}
-                  price={i.price}
-                  rating={i.rating}
-                  key={i._id}
-                  got={true}
-                  platform={i.platform[0]}
-                  productId={i._id}
-                />
-              );
-            })}
+            {games ? (
+              games?.map((i) => {
+                return (
+                  <Card
+                    gameName={i.title}
+                    imageName={i.photo}
+                    price={i.price}
+                    rating={i.rating}
+                    key={i._id}
+                    got={true}
+                    platform={i.platform[0]}
+                    productId={i._id}
+                  />
+                );
+              })
+            ) : (
+              <Loading />
+            )}
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./wishlist.scss";
 import Card from "../../main/resuables/card";
 import { fetchCartItem } from "../../../store/actions/cart";
+import Loading from "../../main/resuables/loading";
 function WishList() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.cartItemsReducer);
@@ -15,19 +16,23 @@ function WishList() {
       <div className="workingArea">
         <div className="container">
           <div className="content">
-            {games?.map((i) => {
-              return (
-                <Card
-                  gameName={i.product.title}
-                  imageName={i.product.photo}
-                  price={i.product.price}
-                  rating={i.product.rating}
-                  key={i.id}
-                  got={true}
-                  productId={i.product._id}
-                />
-              );
-            })}
+            {games ? (
+              games?.map((i) => {
+                return (
+                  <Card
+                    gameName={i.product.title}
+                    imageName={i.product.photo}
+                    price={i.product.price}
+                    rating={i.product.rating}
+                    key={i.id}
+                    got={true}
+                    productId={i.product._id}
+                  />
+                );
+              })
+            ) : (
+              <Loading />
+            )}
           </div>
         </div>
       </div>

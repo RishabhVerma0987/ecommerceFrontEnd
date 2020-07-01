@@ -25,15 +25,6 @@ function UserPage(props) {
     { name: <Wishlist />, value: false, key: "wishlist" },
   ]);
 
-  // const changeCompo = (key) => {
-  //   let temp = nav;
-  //   for (let i = 0; i < temp.length; i++) {
-  //     temp[i].value = false;
-  //   }
-  //   temp[key].value = true;
-  //   setNav([...temp]);
-  // };
-
   return (
     <React.Fragment>
       <Navbar color={"#1f2227"} />
