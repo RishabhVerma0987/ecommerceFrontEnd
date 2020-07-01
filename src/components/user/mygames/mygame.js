@@ -12,7 +12,7 @@ function MyGames() {
 
   return (
     <div className="mygames">
-      <div className="cart-contents">
+      <div className="cart-contents" style={{ paddingBottom: "4rem" }}>
         {games ? (
           games?.map((game) => {
             return (

@@ -15,7 +15,7 @@ function WishList() {
     <div className="wishlistCompo">
       <div className="workingArea">
         <div className="container">
-          <div className="content">
+          <div className="content" style={{ paddingBottom: "4rem" }}>
             {games ? (
               games?.map((i) => {
                 return (

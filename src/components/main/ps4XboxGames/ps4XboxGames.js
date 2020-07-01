@@ -21,7 +21,7 @@ function Ps4XboxGames({ platform }) {
     <div className="workingArea">
       <div className="container">
         <h1>{platform} Games</h1>
-        <div className="content">
+        <div className="content" style={{ paddingBottom: "4rem" }}>
           {platform === "PS4" ? (
             games ? (
               games?.map((i) => {

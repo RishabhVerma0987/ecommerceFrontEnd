@@ -290,7 +290,7 @@ function BrowseHome() {
               })}
             </ul>
           </div>
-          <div className="card-showcase">
+          <div className="card-showcase" style={{ paddingBottom: "4rem" }}>
             {games ? (
               games?.map((i) => {
                 return (
