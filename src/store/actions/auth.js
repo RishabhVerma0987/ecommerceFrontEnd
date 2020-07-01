@@ -1,6 +1,7 @@
 import axios from "axios";
 import { url } from "./index";
 import { fetchCartItem } from "./cart";
+import { notify } from "./helper";
 
 /**
  * @param description : register
@@ -13,16 +14,16 @@ export const registerUser = (name, email, password) => {
     return axios
       .post(`${url}/auth/register`, { name, email, password })
       .then((res) => {
-        console.log(res.data);
+        notify(false, "Sucessfully Registered", null);
         localStorage.setItem("token", res.data.token);
         dispatch(login(res.data));
       })
       .catch(function (error) {
         console.log(error.response.data);
         if (error.response.data.success === false) {
-          alert("User already registered please login");
+          notify(true, "User already registered please login", null);
         } else {
-          alert("Some Problem Occured");
+          notify(true, "Some problem occured", null);
         }
       });
   };
@@ -40,15 +41,20 @@ export const loginUser = (email, password) => {
       .post(`${url}/auth/login`, { email, password })
       .then((res) => {
         console.log(res.data);
+        notify(false, "Sucessfully Login !! 👌", null);
         localStorage.setItem("token", res.data.token);
         dispatch(login(res.data));
       })
       .catch(function (error) {
         console.log(error.response.data);
         if (error.response.data.success === false) {
-          alert("Email , Password is wrong please try register or try again");
+          notify(
+            true,
+            "Email , Password is wrong please try register or try again",
+            null
+          );
         } else {
-          alert("Some Problem Occured");
+          notify(true, "Some problem occured", null);
         }
       });
   };
@@ -93,9 +99,9 @@ export const AuthMe = (bool) => {
       .catch(function (error) {
         console.log(error.response.data);
         if (error.response.data.success === false) {
-          alert("Please Login or Register first");
+          notify(true, "Please Login or Register first", null);
         } else {
-          alert("Some Problem Occured");
+          notify(true, "Some problem occured", null);
         }
       });
   };

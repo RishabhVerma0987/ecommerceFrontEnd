@@ -5,8 +5,14 @@ import AnimateHeight from "react-animate-height";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllGames } from "../../../store/actions/browse";
 import Card from "../../main/resuables/card";
+import { toast } from "react-toastify";
 var array = require("lodash/array");
 function BrowseHome() {
+  const notifySucess = () =>
+    toast.dark(<p>Some of the filter might not work , work in progress</p>, {
+      position: toast.POSITION.TOP_LEFT,
+    });
+
   const categoryList = [
     {
       title: "platform",
@@ -76,7 +82,7 @@ function BrowseHome() {
 
   useEffect(() => {
     dispatch(fetchAllGames());
-
+    notifySucess();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [height, setHeight] = useState(0);

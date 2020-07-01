@@ -1,5 +1,7 @@
 import axios from "axios";
 import { url } from "./index";
+import { toast } from "react-toastify";
+import React from "react";
 
 /**
  * @param description : create cart item
@@ -118,8 +120,14 @@ export const deleteCartItem = (id) => {
  * @param url : url/cart/:id
  * @param dispatch : ---
  */
-
 export const addToWishList = (cartId) => {
+  const notifySucess = () =>
+    toast.dark(<p>Added to Wishlist !!</p>, {
+      position: toast.POSITION.TOP_CENTER,
+    });
+
+  const notifyError = () => toast.error("Some problem occured .");
+
   return function (dispatch) {
     const headers = {
       "Content-Type": "application/json",
@@ -134,11 +142,11 @@ export const addToWishList = (cartId) => {
       )
       .then((res) => {
         console.log(res.data);
-        alert("added to wishlist");
+        notifySucess();
       })
       .catch(function (error) {
         console.log(error);
-        alert("Some Problem Occured");
+        notifyError();
       });
   };
 };
