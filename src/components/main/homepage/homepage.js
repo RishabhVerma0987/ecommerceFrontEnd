@@ -5,6 +5,7 @@ import Navbar from "../navbar/navbar";
 import "./homepage.scss";
 import Background from "../background/background";
 import { Link } from "react-router-dom";
+import Loading from "../resuables/loading";
 function Homepage() {
   const dispatch = useDispatch();
   const stateTopGames = useSelector((state) => state.bannerTopGamesReducer);
@@ -68,7 +69,9 @@ function Homepage() {
               );
             })}
           </div>
-        ) : null}
+        ) : (
+          <Loading />
+        )}
       </div>
     </React.Fragment>
   );

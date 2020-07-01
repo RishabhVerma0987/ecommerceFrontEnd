@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "../resuables/card";
 import "./ps4xboxgames.scss";
 import { fetchPS4Games, fetchXBOXGames } from "../../../store/actions/index";
+import Loading from "../resuables/loading";
 function Ps4XboxGames({ platform }) {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.ps4GamesReducer);
@@ -21,8 +22,9 @@ function Ps4XboxGames({ platform }) {
       <div className="container">
         <h1>{platform} Games</h1>
         <div className="content">
-          {platform === "PS4"
-            ? games?.map((i) => {
+          {platform === "PS4" ? (
+            games ? (
+              games?.map((i) => {
                 return (
                   <Card
                     gameName={i.title}
@@ -34,19 +36,26 @@ function Ps4XboxGames({ platform }) {
                   />
                 );
               })
-            : xbox?.map((i) => {
-                return (
-                  <Card
-                    gameName={i.title}
-                    imageName={i.photo}
-                    price={i.price}
-                    rating={i.rating}
-                    productId={i._id}
-                    got={true}
-                    platform={i.platform[0]}
-                  />
-                );
-              })}
+            ) : (
+              <Loading />
+            )
+          ) : xbox ? (
+            xbox?.map((i) => {
+              return (
+                <Card
+                  gameName={i.title}
+                  imageName={i.photo}
+                  price={i.price}
+                  rating={i.rating}
+                  productId={i._id}
+                  got={true}
+                  platform={i.platform[0]}
+                />
+              );
+            })
+          ) : (
+            <Loading />
+          )}
         </div>
       </div>
     </div>

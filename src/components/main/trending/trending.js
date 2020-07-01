@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./trending.scss";
 import MainBox from "./resusableCompo/mainbox";
-
 function Trending() {
   return (
     <div className="trending">
