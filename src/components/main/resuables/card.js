@@ -60,7 +60,7 @@ function Card({
               </p>
             </div>
             <div className="rating">
-              <p>{rating} S</p>
+              <p>{rating} ⭐</p>
             </div>
           </div>
         </div>

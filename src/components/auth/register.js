@@ -59,6 +59,7 @@ function Register() {
     }
   }, [email, password, confirmPassword]);
   const goRegister = () => {
+    setShow(false);
     if (
       email &&
       password &&
@@ -70,6 +71,7 @@ function Register() {
       dispatch(registerUser(email, email, password));
     } else {
       alert("please fill field carefully");
+      setShow(true);
     }
   };
   useEffect(() => {
@@ -77,6 +79,8 @@ function Register() {
       history.goBack();
     }
   }, [login]);
+
+  const [show, setShow] = useState(true);
   console.log(login);
   return (
     <div className="auth">
@@ -150,7 +154,10 @@ function Register() {
             ) : null}
           </div>
           <div className="submit">
-            <button onClick={() => goRegister()}>Submit</button>
+            <button onClick={() => goRegister()}>
+              {" "}
+              {show ? "Submit" : "Please Wait ..."}
+            </button>
           </div>
           <div className="create">
             <p>

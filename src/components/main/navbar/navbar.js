@@ -100,7 +100,7 @@ function Navbar({ color }) {
                 setOpen(!open);
               }}
             >
-              HA
+              <img src={require("../../../assets/menu.png")} alt="menu"></img>
             </li>
           </ul>
           <ul className={openNav()}>

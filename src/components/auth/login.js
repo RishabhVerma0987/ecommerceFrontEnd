@@ -51,10 +51,12 @@ function Auth() {
   }, [email, password]);
 
   const goLogin = () => {
+    setShow(false);
     if (email && password !== "" && !errorEmail && !errorPassword) {
       dispatch(loginUser(email, password));
     } else {
       alert("please fill field carefully");
+      setShow(true);
     }
   };
 
@@ -63,6 +65,8 @@ function Auth() {
       history.goBack();
     }
   }, [login]);
+
+  const [show, setShow] = useState(true);
 
   return (
     <div className="auth">
@@ -117,7 +121,9 @@ function Auth() {
             ) : null}
           </div>
           <div className="submit">
-            <button onClick={() => goLogin()}>Submit</button>
+            <button onClick={() => goLogin()}>
+              {show ? "Submit" : "Please Wait ..."}
+            </button>
           </div>
           <div className="create">
             <p>
