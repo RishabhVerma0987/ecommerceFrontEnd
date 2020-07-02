@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="215" height="167" viewBox="0 0 215 167">
+  <g id="Group_6" data-name="Group 6" transform="translate(-6542 480)">
+    <g id="Rectangle_108" data-name="Rectangle 108" transform="translate(6542 -480)" fill="#032a33" stroke="#707070" stroke-width="1">
+      <rect width="215" height="167" rx="18" stroke="none"/>
+      <rect x="0.5" y="0.5" width="214" height="166" rx="17.5" fill="none"/>
+    </g>
+    <g id="Component_1_7" data-name="Component 1 – 7" transform="translate(6585 -435)">
+      <g id="Group_1" data-name="Group 1" transform="translate(-895 -28)">
+        <g id="Icon_feather-book-open" data-name="Icon feather-book-open" transform="translate(914 23.5)">
+          <path id="Path_4" data-name="Path 4" d="M3,4.5H29A17.333,17.333,0,0,1,46.333,21.833V82.5a13,13,0,0,0-13-13H3Z" transform="translate(0)" fill="none" stroke="#f1d18a" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+          <path id="Path_5" data-name="Path 5" d="M61.333,4.5h-26A17.333,17.333,0,0,0,18,21.833V82.5a13,13,0,0,1,13-13H61.333Z" transform="translate(28.333)" fill="none" stroke="#f1d18a" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+        </g>
+        <text id="GUN" transform="translate(895 87)" fill="#f1d18a" font-size="61" font-family="HelveticaNeueLight, HelveticaNeue"><tspan x="0" y="0">GUN</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

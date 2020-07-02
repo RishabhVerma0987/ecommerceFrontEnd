@@ -49,7 +49,7 @@ function Payment({ amountToBePayed, productIdList }) {
       order_id: data.id,
       name: "Payment",
       description: "Thank you for showing us some interest",
-      image: require("../../../assets/logo.svg"),
+      image: require("../../../assets/logowithbg.svg"),
       handler: function (response) {
         console.log(response);
         notify(false, "Payment Sucessfull !! 🙌", null);
